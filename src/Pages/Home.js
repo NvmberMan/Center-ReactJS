@@ -85,20 +85,28 @@ function Home() {
             <p className="title">STEAM ACHIEVEMENT</p>
             <div className="row">
               <div className="side left-side">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {Array.from({ length: 4 }).map((_, index) => (
+                  <div className="box">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="" />
+                    <p>Grand Theft Auto V</p>
+                  </div>
+                ))}
               </div>
               <img className="trailer" src="" alt="" />
               <div className="side right-side">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {Array.from({ length: 4 }).map((_, index) => (
+                  <div className="box">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="" />
+                    <p>Grand Theft Auto V</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="page5">
+          
         </div>
         {<Footer />}
       </div>
