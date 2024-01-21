@@ -1,13 +1,95 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --black: #000000;
+    
+  --body_background: #2e7039;
+  --primary: #26602F;
+  --secondary: #5C9C67;
+  --secondary_2: #2B6936;
+  --skeleton: #52885B;
+  --text_10: #ffffff;
+  --text_9: #D9E5DB;
+  --text_8: #d5d5d5;
+
+  --width1350: 1350px;
+  --width1180: 1180px;
+  --width950: 950px;
+  --width720: 720px;
+  --width540: 540px;
+
+  --transition03: 0.3s;
+}
+
+[data-theme="dark"] {
+  --body_background: #1b1b1b;
+  --primary: #333333;
+  --secondary: #6D6D6D;
+  --secondary_2: #191919;
+  --skeleton: #434343;
+  --text_10: #ffffff;
+  --text_9: #DFDFDF;
+  --text_8: #d5d5d5;
+}
+
+.title {
+  font-weight: 850;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content{
+    width: 100%;
+}
+
+
+
+@media screen and (min-width: 576px) {
+  /*=================================MAIN=================================*/
+  .content {
+    max-width: var(--width540);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /*=================================MAIN=================================*/
+  .content {
+    max-width: var(--width720);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  /*=================================MAIN=================================*/
+  .content {
+    max-width: var(--width950);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /*=================================MAIN=================================*/
+  .content {
+    max-width: var(--width1180);
+  }
+}
+
+@media screen and (min-width: 1392px) {
+  /*=================================MAIN=================================*/
+  .content {
+    max-width: var(--width1350);
+  }
 }
