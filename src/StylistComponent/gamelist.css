@@ -51,3 +51,43 @@
     transition: var(--transition03);
 
 }
+
+
+/* TYPE2 */
+
+.games.type2{
+        width: 900px;
+        margin-top: 20px;
+}
+
+.games.type2 .gamelist{
+    width: 100%;
+}
+
+
+.games.type2 .gamelist .box{
+    width: 600px;
+}
+
+.games.type2 .gamelist .box:hover img{
+    filter: brightness(100%);
+}
+
+.games.type2 .gamelist .box img{
+    width: 290px;
+}
+
+.games.type2 .gamelist .box p{
+    width: 100%;
+    position:static;
+    opacity: 1;
+    text-align: left;
+    padding: 0 15px;
+}
+
+.games.type2 .gamelist .box .description{
+    width: 100%;
+    color: var(--text_8);
+    font-weight: 250;
+    font-size: 15px;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Gamelist from "../Components/Gamelist";
+import GamelistType2 from "../Components/GamelistType2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faWindowClose,
@@ -13,6 +14,7 @@ function Home() {
     <div className="container">
       <div className="content">
         {<Navbar />}
+        
         <div className="page1">
           <div className="leftside">
             <img
@@ -92,7 +94,7 @@ function Home() {
                   </div>
                 ))}
               </div>
-              <img className="trailer" src="" alt="" />
+              <img className="trailer" src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="" />
               <div className="side right-side">
                 {Array.from({ length: 4 }).map((_, index) => (
                   <div className="box">
@@ -106,8 +108,10 @@ function Home() {
         </div>
 
         <div className="page5">
-          
+          <GamelistType2/>
+          <GamelistType2/>
         </div>
+
         {<Footer />}
       </div>
     </div>
