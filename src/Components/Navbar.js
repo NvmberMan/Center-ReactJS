@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faAngleDown,
+  faBars,
   faGlobe,
   faMoon,
   faSearch,
@@ -29,7 +30,7 @@ export default function Navbar() {
       <div className="navbar">
         <h1 className="title">CENTRAL</h1>
         <ul className="navbar-left">
-          <li>
+          <li className="selected">
             <a href="/">ALL GAMES</a>
             <FontAwesomeIcon className="icon" icon={faAngleDown} />
           </li>
@@ -42,6 +43,8 @@ export default function Navbar() {
           <FontAwesomeIcon id="toggleThemeId" className="icon" icon={themeToogle ? faMoon : faSun} onClick={toggleTheme}/>
           <FontAwesomeIcon className="icon" icon={faGlobe} />
           <li>YOUR ACCOUNT</li>
+          <FontAwesomeIcon className="icon humberger" icon={faBars} />
+
         </ul>
       </div>
     </div>

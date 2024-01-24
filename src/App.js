@@ -1,5 +1,8 @@
 import "./App.css";
 import './StylistComponent/gamelist.css';
+import './StylistComponent/navbar.css';
+import './StylistComponent/footer.css';
+import './StylistComponent/responsive.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";

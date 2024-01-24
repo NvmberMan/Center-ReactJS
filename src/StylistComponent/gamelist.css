@@ -1,93 +1,94 @@
-.games .title{
-    font-weight: 200;
-    color: var(--text_10);
+.games .title {
+  font-weight: 200;
+  color: var(--text_10);
 }
 
-.games .gamelist{
-    display: flex;
-    width: 85%;
-    margin-top: 8px;
-    margin-left: -5px;
-    margin-bottom: 10px;
+.games .gamelist {
+  display: flex;
+  width: 85%;
+  margin-top: 8px;
+  margin-left: -5px;
+  margin-bottom: 10px;
 }
 
-.games  .gamelist .box{
-    text-align: center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
+.games .gamelist .box {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.games  .gamelist .box:hover img{
-    filter: brightness(20%);
-    transition: var(--transition03);
+.games .gamelist .box:hover .display {
+  filter: brightness(20%);
+  transition: var(--transition03);
 }
-.games  .gamelist .box:hover p{
-    opacity: 1;
-    transition: var(--transition03);
-
-}
-
-.games  .gamelist .box p{
-    color: var(--text_8);
-    position: absolute;
-    font-weight: 600;
-    opacity: 0;
-    transition: var(--transition03);
+.games .gamelist .box:hover p {
+  opacity: 1;
+  transition: var(--transition03);
 }
 
-.games .gamelist img{
-    width: 180px;
-    height: 190px;
-    margin-bottom: 8px;
-    object-fit: cover;
-    border: 3px solid var(--black);
-    background-color: var(--skeleton);
-    filter: brightness(90%);
-    transition: var(--transition03);
-
+.games .gamelist .box p {
+  color: var(--text_8);
+  position: absolute;
+  font-weight: 600;
+  opacity: 0;
+  transition: var(--transition03);
 }
 
+.games .gamelist .display {
+  width: 180px;
+  height: 190px;
+  margin-bottom: 8px;
+  object-fit: cover;
+  /* border: 3px solid rgb(45, 45, 45); */
+  background-color: var(--skeleton);
+  filter: brightness(90%);
+  transition: var(--transition03);
+}
+
+.games .gamelist .skeleton .display {
+  background: linear-gradient(90deg, transparent, var(--skeleton), transparent);
+  background-size: 200% 100%;
+  animation: skeletonAnimation 2.5s infinite linear;
+}
 
 /* TYPE2 */
 
-.games.type2{
-        width: 900px;
-        margin-top: 20px;
+.games.type2 {
+  width: 900px;
+  margin-top: 20px;
 }
 
-.games.type2 .gamelist{
-    width: 100%;
+.games.type2 .gamelist {
+  width: 100%;
 }
 
-
-.games.type2 .gamelist .box{
-    width: 600px;
+.games.type2 .gamelist .box {
+  width: 600px;
 }
 
-.games.type2 .gamelist .box:hover img{
-    filter: brightness(100%);
+.games.type2 .gamelist .box:hover img {
+  filter: brightness(100%);
 }
 
-.games.type2 .gamelist .box img{
-    width: 290px;
+.games.type2 .gamelist .box img {
+  width: 290px;
 }
 
-.games.type2 .gamelist .box p{
-    width: 100%;
-    position:static;
-    opacity: 1;
-    text-align: left;
-    padding: 0 15px;
+.games.type2 .gamelist .box p {
+  width: 100%;
+  position: static;
+  opacity: 1;
+  text-align: left;
+  padding: 0 15px;
 }
 
-.games.type2 .gamelist .box .description{
-    width: 100%;
-    color: var(--text_8);
-    font-weight: 250;
-    font-size: 15px;
+.games.type2 .gamelist .box .description {
+  width: 100%;
+  color: var(--text_8);
+  font-weight: 250;
+  font-size: 15px;
 }

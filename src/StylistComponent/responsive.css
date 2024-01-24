@@ -1,0 +1,354 @@
+@media screen and (min-width: 576px) {
+  .content {
+    max-width: 90vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    max-width: 90vw;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .content {
+    max-width: var(--width950);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .content {
+    max-width: var(--width1180);
+  }
+}
+
+@media screen and (min-width: 1392px) {
+  .content {
+    max-width: var(--width1350);
+  }
+}
+
+/* -------------------------------------------------------------- */
+
+@media screen and (max-width: 1392px) {
+  .page1 {
+    justify-content: center;
+  }
+
+  .page1 .leftside .display-2 {
+    margin-left: 120px;
+  }
+
+  .page1 .rightside {
+    margin-right: 40px;
+  }
+
+  .page1 .rightside .gamelist {
+    width: 100%;
+  }
+
+  /* ------------- PAGE 2 --------------- */
+  .page2 {
+    padding-top: 150px;
+  }
+  .page2 .gamegrid .box-8,
+  .page2 .gamegrid .box-9,
+  .page2 .gamegrid .box-10,
+  .page2 .gamegrid .box-11
+  {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  /* ---------------NAVBAR------------- */
+
+  /* ---------------PAGE 1------------- */
+  .page1 {
+    justify-content: center;
+  }
+
+  .page1 .leftside .display-2 {
+    margin-left: 120px;
+  }
+
+  .page1 .rightside {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 30px;
+    justify-content: center;
+    margin-bottom: -60px;
+    padding-top: 140px;
+    margin-left: 70px;
+  }
+
+  .page1 .rightside .recommend.games .title {
+    display: none;
+  }
+
+  .page1 .rightside .games .gamelist {
+    width: 100%;
+  }
+
+  .page1 .rightside .games .gamelist .box:hover .display {
+    filter: brightness(100%);
+  }
+
+  .page1 .rightside .games .gamelist .box p {
+    opacity: 1;
+    position: static;
+  }
+
+  .page1 .rightside .games .gamelist .box .display,
+  .page1 .rightside .games .gamelist .skeleton .display {
+    width: 140px;
+    height: 135px;
+  }
+  /* ---------------PAGE 2------------- */
+
+
+  /* ---------------PAGE 3------------- */
+  /* ---------------PAGE 4------------- */
+  /* ---------------PAGE 5------------- */
+
+  /* ---------------FOOTER------------- */
+  .footer {
+  }
+
+  .footer .top {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  /* ---------------NAVBAR------------- */
+  .navbar .title {
+    font-size: 26px;
+  }
+
+  .navbar ul {
+    padding-left: 20px;
+  }
+
+  .navbar ul li {
+    font-size: 14px;
+  }
+
+  .navbar .navbar-right {
+    width: fit-content;
+    padding: 0;
+    display: flex;
+  }
+
+  .navbar .navbar-right .icon {
+    display: none;
+  }
+  .navbar .navbar-right .humberger {
+    display: inherit;
+    font-size: 30px;
+  }
+
+  .navbar ul li {
+    display: none;
+  }
+
+  .navbar ul .selected {
+    display: inherit;
+  }
+
+  /* ---------------PAGE 1------------- */
+  .page1 {
+    flex-direction: column;
+  }
+
+  .page1 .leftside {
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+  }
+
+  .page1 .leftside .display-1,
+  .page1 .leftside .display-2 {
+    width: 350px;
+    height: 480px;
+    position: static;
+    margin: 0;
+  }
+
+  .page1 .rightside {
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+    padding-top: 0;
+    align-items: center;
+  }
+
+  .page1 .rightside .games {
+    width: 530px;
+  }
+  .page1 .rightside .games .gamelist .box .display {
+    width: 170px;
+    height: 170px;
+  }
+  .page1 .rightside .games .skeleton .display {
+    width: 170px;
+    height: 170px;
+  }
+  
+  .page1 .rightside .recommend{
+    margin-top: 10px;
+  }
+  /* ---------------PAGE 2------------- */
+  .page2 {
+    padding-top: 100px;
+  }
+  .page2 .title{
+    padding: 0;
+    text-align: center;
+  }
+
+  .page2 .gamegrid .box{
+    width: 85vw;
+  }
+  .page2 .gamegrid .box-4,
+  .page2 .gamegrid .box-5,
+  .page2 .gamegrid .box-6,
+  .page2 .gamegrid .box-7
+  {
+    display: none;
+  }
+  /* ---------------PAGE 3------------- */
+  /* ---------------PAGE 4------------- */
+  /* ---------------PAGE 5------------- */
+
+  /* ---------------FOOTER------------- */
+
+  .footer .top {
+    width: 100%;
+  }
+  .bottom {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* ---------------NAVBAR------------- */
+
+  /* ---------------PAGE 1------------- */
+  .page1 .leftside .display-1,
+  .page1 .leftside .display-2 {
+    width: 280px;
+    height: 400px;
+    position: static;
+    margin: 0;
+  }
+
+  /* ---------------PAGE 2------------- */
+
+  /* ---------------PAGE 3------------- */
+  /* ---------------PAGE 4------------- */
+  /* ---------------PAGE 5------------- */
+
+  /* ---------------FOOTER------------- */
+}
+
+@media screen and (max-width: 610px) {
+  /* ---------------NAVBAR------------- */
+
+  .navbar {
+    padding: 0 20px;
+    height: 70px;
+  }
+
+  .navbar .title {
+    font-size: 20px;
+  }
+  .navbar ul .selected {
+    display: none;
+  }
+
+  /* ---------------PAGE 1------------- */
+  .page1 .leftside .display-1 {
+    margin-right: -80px;
+    width: 43vw;
+    height: 65vw;
+  }
+  .page1 .leftside .display-2 {
+    width: 53vw;
+    height: 75vw;
+  }
+  .page1 .rightside {
+    padding: 0;
+    margin: 0;
+  }
+
+  .page1 .rightside .games {
+    width: 80vw;
+    padding: 0;
+    margin: 0;
+  }
+
+  .page1 .rightside .games .gamelist {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .page1 .rightside .games .gamelist .box .display,
+  .page1 .rightside .games .gamelist .skeleton .display {
+    width: 25vw;
+    height: 25vw;
+  }
+
+  /* ---------------PAGE 2------------- */
+
+  /* ---------------PAGE 3------------- */
+  /* ---------------PAGE 4------------- */
+  /* ---------------PAGE 5------------- */
+
+  /* ---------------FOOTER------------- */
+}
+
+@media screen and (max-width: 442px) {
+  /* ---------------NAVBAR------------- */
+
+  /* ---------------PAGE 1------------- */
+  .page1 .leftside .display-1 {
+    margin-right: -120px;
+    margin-bottom: -40px;
+    width: 53vw;
+    height: 75vw;
+  }
+  .page1 .leftside .display-2 {
+    width: 73vw;
+    height: 102vw;
+    margin-left: -20px;
+  }
+
+  .page1 .rightside {
+    height: fit-content;
+  }
+
+  .page1 .rightside .games .gamelist .box .display,
+  .page1 .rightside .games .gamelist .skeleton .display
+   {
+    width: 37vw;
+    height: 37vw;
+  }
+
+  .page1 .rightside .recommend{
+    margin-top: 20px;
+  }
+
+  /* ---------------PAGE 2------------- */
+
+  /* ---------------PAGE 3------------- */
+  /* ---------------PAGE 4------------- */
+  /* ---------------PAGE 5------------- */
+
+  /* ---------------FOOTER------------- */
+}

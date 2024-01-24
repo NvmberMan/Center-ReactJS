@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 
 // import Swiper JS
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,26 +12,38 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 export class Gamelist extends Component {
   render(props) {
+    const { slidesPerView, childClass = "", gameData, title = "Title List" } = this.props;
+    
+    const truncateText = (text, maxLength) => {
+      if (text.length > maxLength) {
+        return text.substring(0, maxLength) + "...";
+      }
+      return text;
+    };
+
+
+
     return (
-      <div className="games">
-        <p className="title">Most Review</p>
+      <div className={`games ${childClass}`}>
+        <p className="title">{title}</p>
         <Swiper
           className="gamelist"
           spaceBetween={0}
-          slidesPerView={this.props.slidesPerView ?? 3}
-          loop={true}
+          slidesPerView={slidesPerView ?? 3}
+          loop={gameData.length > 0 ? true : false}
           autoplay={{
             delay: 2500,
           }}
           modules={[Autoplay, Pagination, Navigation]}
         >
-          {Array.from({ length: 12 }).map((_, index) => (
+          {gameData && gameData.map((item, index) => (
             <SwiperSlide key={index} className="box">
               <img
-                src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png"
+                src={item.background_image}
                 alt=""
+                className="display"
               />
-              <p>Grand Theft Auto V</p>
+              <p>{truncateText(item.name, 18)}</p>
             </SwiperSlide>
           ))}
         </Swiper>
