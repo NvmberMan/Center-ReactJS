@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
+import NavbarResponsive from "../Components/NavbarResponsive";
 import Footer from "../Components/Footer";
 import Gamelist from "../Components/Gamelist";
 // import GamelistType2 from "../Components/GamelistType2";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { hitGetGames } from "../Api";
 import GamelistSkeleton from "../Components/GamelistSkeleton";
 import xbox from "../Images/xbox.svg";
@@ -24,6 +25,8 @@ function Home() {
   const [slidesPerViewPopular, setSlidesPerViewPopular] = useState(3);
 
   useEffect(() => {
+    changeAttributeOnScreenSize();
+
     //Get Recommend Game
     hitGetGames(1, 10)
       .catch((err) => {
@@ -51,7 +54,7 @@ function Home() {
       });
   }, []);
 
-  function changeAttributeOnScreenSize() {
+  const changeAttributeOnScreenSize = () => {
     var windowWidth = window.innerWidth;
     if (windowWidth <= 992) {
       setSlidesPerViewRecommend(4);
@@ -68,11 +71,11 @@ function Home() {
       setSlidesPerViewRecommend(3);
       setSlidesPerViewPopular(3);
     }
-  }
 
-  window.onload = changeAttributeOnScreenSize;
-  window.onresize = changeAttributeOnScreenSize;
-
+    if (windowWidth > 992) {
+      document.getElementById("navbar-responsive").classList.add("hidden");
+    }
+  };
   const getPlatformImage = (platform) => {
     if (platform === "PC") {
       return windows;
@@ -95,11 +98,14 @@ function Home() {
     }
   };
 
+  window.onresize = changeAttributeOnScreenSize;
+
   return (
     <div className="container">
-      <div className="content">
+      {<NavbarResponsive />}
+      {<Navbar />}
+      <div className="content padding-fixed">
         <div className="gradientTop"></div>
-        {<Navbar />}
         <div className="page1">
           <div className="leftside">
             <img

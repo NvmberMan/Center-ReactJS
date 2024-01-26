@@ -45,6 +45,7 @@ a {
 body {
   background-color: var(--body_background);
   overflow-x: hidden;
+  padding-top: 100px;
 }
 
 
@@ -70,8 +71,8 @@ body {
 }
 
 [data-theme="dark"] {
-  --body_background: #1b1b1b;
-  --primary: #333333;
+  --body_background: #222222;
+  --primary: #1b1b1b;
   --secondary: #6D6D6D;
   --secondary_2: #191919;
   --skeleton: #434343;

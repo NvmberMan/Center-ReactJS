@@ -113,9 +113,6 @@
   /* ---------------PAGE 5------------- */
 
   /* ---------------FOOTER------------- */
-  .footer {
-  }
-
   .footer .top {
     width: 90%;
   }
@@ -135,6 +132,10 @@
     font-size: 14px;
   }
 
+  .navbar .content{
+    padding-right: 5px;
+  }
+
   .navbar .navbar-right {
     width: fit-content;
     padding: 0;
@@ -146,16 +147,14 @@
   }
   .navbar .navbar-right .humberger {
     display: inherit;
-    font-size: 30px;
+    font-size: 24px;
+
   }
 
   .navbar ul li {
     display: none;
   }
 
-  .navbar ul .selected {
-    display: inherit;
-  }
 
   /* ---------------PAGE 1------------- */
   .page1 {
@@ -269,6 +268,10 @@
   }
   .navbar ul .selected {
     display: none;
+  }
+
+  .navbar-responsive{
+    padding-top: 80px;
   }
 
   /* ---------------PAGE 1------------- */

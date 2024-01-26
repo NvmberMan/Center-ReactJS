@@ -1,9 +1,19 @@
 /* NAVBAR */
 .navbar {
   display: flex;
+  justify-content: center;
+  width: 100%;
   height: 105px;
-  display: flex;
   align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  background-color: var(--primary);
+}
+
+.navbar .content{
+  display: flex;
   padding: 0 35px 0 10px;
 }
 
@@ -60,3 +70,117 @@
 .navbar .navbar-right .humberger {
   display: none;
 }
+
+
+
+/* ----------------NAVBAR RESPONSIVE---------- */
+.navbar-responsive{
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 110px;
+  background-color: var(--primary);
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  pointer-events: all;
+
+}
+
+.navbar-responsive.hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar-responsive .navbar-top{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  padding-right: 10px;
+}
+
+.navbar-responsive .navbar-top .account{
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  padding-left: 12px;
+  height: 40px;
+  background-color: var(--secondary_2);
+  gap: 10px;
+  font-size: 15px;
+}
+.navbar-responsive .navbar-top .account p{
+  color: var(--text_8);
+}
+
+.navbar-responsive .navbar-top .account .icon{
+  font-size: 16px;
+}
+
+.navbar-responsive .navbar-top .icon{
+  font-size: 25px;
+}
+
+.navbar-responsive .navbar-bottom{
+  /* background-color: red; */
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 0;
+}
+
+.navbar-responsive .navbar-bottom *{
+  color: var(--text_8);
+}
+
+.navbar-responsive .navbar-bottom li{
+  background-color: var(--secondary_2);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.navbar-responsive .navbar-bottom li.selected{
+  background-color: var(--secondary_2);
+}
+
+
+.navbar-responsive .search-container{
+  width: 90%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.navbar-responsive .search-container input{
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+  background-color: var(--secondary);
+  font-size: 18px;
+  padding-left: 20px;
+}
+.navbar-responsive .search-container input::placeholder {
+  color: var(--text_8);
+  opacity: 1; /* Firefox */
+}
+
+.navbar-responsive .search-container input::-ms-input-placeholder { /* Edge 12 -18 */
+  color: var(--text_8);
+}
+
+

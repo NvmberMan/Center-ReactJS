@@ -7,6 +7,7 @@ import {
   faMoon,
   faSearch,
   faSun,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
@@ -25,33 +26,15 @@ export default function Navbar() {
     else setLightkMode();
   };
 
-  const toogleNavbar = () => {
-    const navbarResponsive = document.getElementById("navbar-responsive");
-    if(navbarResponsive.classList.contains("hidden"))
-    {
-      navbarResponsive.classList.remove("hidden");
-    }else
-    {
-      navbarResponsive.classList.add("hidden");
-    }
-  }
-
   return (
     <div>
-      <div className="navbar">
+      <div className="navbar-responsive hidden" id="navbar-responsive">
         <div className="content">
-          <h1 className="title">CENTRAL</h1>
-          <ul className="navbar-left">
-            <li className="selected">
-              <a href="/">ALL GAMES</a>
-              <FontAwesomeIcon className="icon" icon={faAngleDown} />
-            </li>
-            <li>WISHLIST</li>
-            <li>SUPPORT</li>
-          </ul>
-          <div className="tools"></div>
-          <ul className="navbar-right">
-            <FontAwesomeIcon className="icon" icon={faSearch} />
+          <div className="navbar-top">
+            <div className="account">
+              <FontAwesomeIcon className="icon" icon={faUser} />
+              <p>YOUR ACCOUNT</p>
+            </div>
             <FontAwesomeIcon
               id="toggleThemeId"
               className="icon"
@@ -59,9 +42,19 @@ export default function Navbar() {
               onClick={toggleTheme}
             />
             <FontAwesomeIcon className="icon" icon={faGlobe} />
-            <li>YOUR ACCOUNT</li>
-            <FontAwesomeIcon className="icon humberger" onClick={toogleNavbar} icon={faBars} />
+          </div>
+          <ul className="navbar-bottom">
+            <li className="selected">
+              <a href="/">All Games</a>
+              <FontAwesomeIcon className="icon" icon={faAngleDown} />
+            </li>
+            <li>Wishlist</li>
+            <li>Support</li>
           </ul>
+
+          <div className="search-container">
+            <input type="text" placeholder="Search Game" />
+          </div>
         </div>
       </div>
     </div>
