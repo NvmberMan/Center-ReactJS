@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
-import NavbarResponsive from "../Components/NavbarResponsive";
 import Footer from "../Components/Footer";
 import Gamelist from "../Components/Gamelist";
 // import GamelistType2 from "../Components/GamelistType2";
@@ -19,10 +18,14 @@ import macos from "../Images/macos.svg";
 function Home() {
   const [recommendGameList, setRecommendGameList] = useState();
   const [popularGameList, setPopularGameList] = useState();
+  const [multiplayerGameList, setMultiplayerGameList] = useState();
+  const [SingleplayerGameList, setSingleplayerGameList] = useState();
   const [gameList, setGameList] = useState();
 
   const [slidesPerViewRecommend, setSlidesPerViewRecommend] = useState(3);
   const [slidesPerViewPopular, setSlidesPerViewPopular] = useState(3);
+  const [slidesPerViewMultiplayerGame, setSlidesPerViewMultiplayerGame] =
+    useState(6);
 
   useEffect(() => {
     changeAttributeOnScreenSize();
@@ -43,7 +46,7 @@ function Home() {
       .then((data) => {
         setPopularGameList(data.data.results);
       });
-    //Get List Game
+    //Get List Game -- for page 2
     hitGetGames(5, 12)
       .catch((err) => {
         console.log(err);
@@ -52,24 +55,50 @@ function Home() {
         setGameList(data.data.results);
         console.log(data.data.results);
       });
+    //Get List Multiplayer
+    hitGetGames(7, 12)
+      .catch((err) => {
+        console.log(err);
+      })
+      .then((data) => {
+        setMultiplayerGameList(data.data.results);
+      });
+    //Get List Singleplayer
+    hitGetGames(8, 12)
+      .catch((err) => {
+        console.log(err);
+      })
+      .then((data) => {
+        setSingleplayerGameList(data.data.results);
+      });
   }, []);
 
   const changeAttributeOnScreenSize = () => {
     var windowWidth = window.innerWidth;
-    if (windowWidth <= 992) {
-      setSlidesPerViewRecommend(4);
-      setSlidesPerViewPopular(4);
-    }
-    if (windowWidth <= 868) {
-      setSlidesPerViewRecommend(3);
-      setSlidesPerViewPopular(3);
-    }
+
     if (windowWidth <= 442) {
       setSlidesPerViewRecommend(2);
       setSlidesPerViewPopular(2);
+      setSlidesPerViewMultiplayerGame(3);
+    } else if (windowWidth <= 610) {
+      setSlidesPerViewMultiplayerGame(4);
+    } else if (windowWidth <= 768) {
+      setSlidesPerViewRecommend(3);
+      setSlidesPerViewPopular(3);
+      setSlidesPerViewMultiplayerGame(4);
+    } else if (windowWidth <= 992) {
+      setSlidesPerViewRecommend(4);
+      setSlidesPerViewPopular(4);
+    } else if (windowWidth <= 1200) {
+      setSlidesPerViewRecommend(3);
+      setSlidesPerViewPopular(3);
+      setSlidesPerViewMultiplayerGame(4);
+    } else if (windowWidth <= 1392) {
+      setSlidesPerViewMultiplayerGame(5);
     } else {
       setSlidesPerViewRecommend(3);
       setSlidesPerViewPopular(3);
+      setSlidesPerViewMultiplayerGame(6);
     }
 
     if (windowWidth > 992) {
@@ -102,7 +131,6 @@ function Home() {
 
   return (
     <div className="container">
-      {<NavbarResponsive />}
       {<Navbar />}
       <div className="content padding-fixed">
         <div className="gradientTop"></div>
@@ -120,31 +148,17 @@ function Home() {
             />
           </div>
           <div className="rightside">
-            {popularGameList && popularGameList.length > 0 ? (
-              <Gamelist
-                gameData={popularGameList}
-                title={"Most Popular"}
-                slidesPerView={slidesPerViewPopular}
-              />
-            ) : (
-              <GamelistSkeleton
-                title={"Most Popular"}
-                slidesPerView={slidesPerViewPopular}
-              />
-            )}
-            {recommendGameList && recommendGameList.length > 0 ? (
-              <Gamelist
-                childClass={"recommend"}
-                gameData={recommendGameList}
-                title={"Recommend For You"}
-                slidesPerView={slidesPerViewRecommend}
-              />
-            ) : (
-              <GamelistSkeleton
-                title={"Recommend For You"}
-                slidesPerView={slidesPerViewRecommend}
-              />
-            )}
+            <Gamelist
+              gameData={popularGameList}
+              title={"Most Popular"}
+              slidesPerView={slidesPerViewPopular}
+            />
+            <Gamelist
+              childClass={"recommend"}
+              gameData={recommendGameList}
+              title={"Recommend For You"}
+              slidesPerView={slidesPerViewRecommend}
+            />
           </div>
         </div>
 
@@ -182,8 +196,17 @@ function Home() {
         </div>
 
         <div className="page3">
-          {/* {<Gamelist slidesPerView={5} />} */}
-          {/* {<Gamelist slidesPerView={5} />} */}
+          <Gamelist
+            gameData={multiplayerGameList}
+            title={"Multiplayer Game"}
+            slidesPerView={slidesPerViewMultiplayerGame}
+          />
+          <Gamelist
+            childClass={"recommend"}
+            gameData={SingleplayerGameList}
+            title={"Singleplayer"}
+            slidesPerView={slidesPerViewMultiplayerGame}
+          />
         </div>
 
         {/* <div className="page4">

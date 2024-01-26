@@ -7,6 +7,7 @@ import {
   faMoon,
   faSearch,
   faSun,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
@@ -62,6 +63,35 @@ export default function Navbar() {
             <li>YOUR ACCOUNT</li>
             <FontAwesomeIcon className="icon humberger" onClick={toogleNavbar} icon={faBars} />
           </ul>
+        </div>
+      </div>
+      <div className="navbar-responsive hidden" id="navbar-responsive">
+        <div className="content">
+          <div className="navbar-top">
+            <div className="account">
+              <FontAwesomeIcon className="icon" icon={faUser} />
+              <p>YOUR ACCOUNT</p>
+            </div>
+            <FontAwesomeIcon
+              id="toggleThemeId"
+              className="icon"
+              icon={themeToogle ? faMoon : faSun}
+              onClick={toggleTheme}
+            />
+            <FontAwesomeIcon className="icon" icon={faGlobe} />
+          </div>
+          <ul className="navbar-bottom">
+            <li className="selected">
+              <a href="/">All Games</a>
+              <FontAwesomeIcon className="icon" icon={faAngleDown} />
+            </li>
+            <li>Wishlist</li>
+            <li>Support</li>
+          </ul>
+
+          <div className="search-container">
+            <input type="text" placeholder="Search Game" />
+          </div>
         </div>
       </div>
     </div>

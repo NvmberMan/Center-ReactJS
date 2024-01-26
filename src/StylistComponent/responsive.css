@@ -54,8 +54,7 @@
   .page2 .gamegrid .box-8,
   .page2 .gamegrid .box-9,
   .page2 .gamegrid .box-10,
-  .page2 .gamegrid .box-11
-  {
+  .page2 .gamegrid .box-11 {
     display: none;
   }
 }
@@ -107,7 +106,6 @@
   }
   /* ---------------PAGE 2------------- */
 
-
   /* ---------------PAGE 3------------- */
   /* ---------------PAGE 4------------- */
   /* ---------------PAGE 5------------- */
@@ -132,7 +130,7 @@
     font-size: 14px;
   }
 
-  .navbar .content{
+  .navbar .content {
     padding-right: 5px;
   }
 
@@ -148,13 +146,11 @@
   .navbar .navbar-right .humberger {
     display: inherit;
     font-size: 24px;
-
   }
 
   .navbar ul li {
     display: none;
   }
-
 
   /* ---------------PAGE 1------------- */
   .page1 {
@@ -187,7 +183,7 @@
   }
 
   .page1 .rightside .games {
-    width: 530px;
+    width: 600px;
   }
   .page1 .rightside .games .gamelist .box .display {
     width: 170px;
@@ -197,30 +193,60 @@
     width: 170px;
     height: 170px;
   }
-  
-  .page1 .rightside .recommend{
+
+  .page1 .rightside .recommend {
     margin-top: 10px;
   }
   /* ---------------PAGE 2------------- */
   .page2 {
     padding-top: 100px;
   }
-  .page2 .title{
+  .page2 .title {
     padding: 0;
     text-align: center;
   }
 
-  .page2 .gamegrid .box{
+  .page2 .gamegrid .box {
     width: 85vw;
   }
   .page2 .gamegrid .box-4,
   .page2 .gamegrid .box-5,
   .page2 .gamegrid .box-6,
-  .page2 .gamegrid .box-7
-  {
+  .page2 .gamegrid .box-7 {
     display: none;
   }
   /* ---------------PAGE 3------------- */
+
+  .page3 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .page3 .games {
+    width: 87%;
+    padding: 0;
+  }
+
+  .page3 .games .gamelist {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .page3 .games .gamelist .box,
+  .page3 .games .gamelist .skeleton{
+    display: flex;
+    justify-content: center;
+  }
+
+  .page3 .games .gamelist .box .display,
+  .page3 .games .gamelist .skeleton .display {
+    width: 19vw;
+    height: 19vw;
+  }
   /* ---------------PAGE 4------------- */
   /* ---------------PAGE 5------------- */
 
@@ -246,9 +272,17 @@
     margin: 0;
   }
 
+  .page1 .rightside .games {
+    width: 460px;
+  }
+
   /* ---------------PAGE 2------------- */
 
   /* ---------------PAGE 3------------- */
+  .page3 .games {
+    width: 93%;
+    padding: 0;
+  }
   /* ---------------PAGE 4------------- */
   /* ---------------PAGE 5------------- */
 
@@ -270,7 +304,7 @@
     display: none;
   }
 
-  .navbar-responsive{
+  .navbar-responsive {
     padding-top: 80px;
   }
 
@@ -310,6 +344,11 @@
   /* ---------------PAGE 2------------- */
 
   /* ---------------PAGE 3------------- */
+  .page3 .games {
+    width: 92%;
+    padding: 0;
+  }
+
   /* ---------------PAGE 4------------- */
   /* ---------------PAGE 5------------- */
 
@@ -337,19 +376,30 @@
   }
 
   .page1 .rightside .games .gamelist .box .display,
-  .page1 .rightside .games .gamelist .skeleton .display
-   {
+  .page1 .rightside .games .gamelist .skeleton .display {
     width: 37vw;
     height: 37vw;
   }
 
-  .page1 .rightside .recommend{
+  .page1 .rightside .recommend {
     margin-top: 20px;
   }
 
   /* ---------------PAGE 2------------- */
 
   /* ---------------PAGE 3------------- */
+  .page3 .games {
+    width: 92%;
+    padding: 0;
+  }
+
+  .page3 .games .gamelist .box .display,
+  .page3 .games .gamelist .skeleton .display
+  {
+    width: 28vw;
+    height: 28vw;
+  }
+  
   /* ---------------PAGE 4------------- */
   /* ---------------PAGE 5------------- */
 

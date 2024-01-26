@@ -127,19 +127,18 @@
 
 .page3 {
   padding: 100px 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .page3 .games {
-  width: 80%;
-  max-width: 90%;
+  width: 93%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
+
+
 
 .page3 .gamelist {
   width: 100% !important;
@@ -148,6 +147,14 @@
 .page3 .games .title {
   width: 100%;
   margin-left: 20px;
+}
+
+.page3 .games .gamelist{
+}
+
+.page3 .games .gamelist .box .display,
+.page3 .games .gamelist .skeleton .display{
+
 }
 
 /* Page4 */
