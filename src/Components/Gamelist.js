@@ -13,7 +13,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 export class Gamelist extends Component {
   render(props) {
     const {
-      slidesPerView,
+      slidesPerView = 2,
       childClass = "",
       gameData = [],
       title = "Title List",
@@ -60,7 +60,7 @@ export class Gamelist extends Component {
             <Swiper
               className="gamelist"
               spaceBetween={0}
-              slidesPerView={slidesPerView ?? 3}
+              slidesPerView={slidesPerView}
               modules={[Autoplay, Pagination, Navigation]}
             >
               {Array.from({ length: slidesPerView }).map((_, index) => (

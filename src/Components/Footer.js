@@ -10,7 +10,6 @@ import Playstation from "../Images/Playstation.png";
 export default function Footer() {
   return (
     <div className="footer">
-      <div className="background"></div>
       <div className="top">
         © 2024 CentralCommunity. All rights reserved. All trademarks are the
         property of their respective owners in the US and other countries. VAT

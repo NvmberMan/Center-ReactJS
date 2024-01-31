@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Gamelist from "../Components/Gamelist";
-// import GamelistType2 from "../Components/GamelistType2";
+import GamelistType2 from "../Components/GamelistType2";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { hitGetGames } from "../Api";
-import GamelistSkeleton from "../Components/GamelistSkeleton";
 import xbox from "../Images/xbox.svg";
 import playstation from "../Images/playstation.svg";
 import windows from "../Images/windows.svg";
@@ -14,22 +13,25 @@ import android from "../Images/android.svg";
 import nintendo from "../Images/nintendo.svg";
 import linux from "../Images/linux.svg";
 import macos from "../Images/macos.svg";
+// import SteamAchievementGamelist from "../Components/SteamAchievementGamelist";
 
 function Home() {
   const [recommendGameList, setRecommendGameList] = useState();
   const [popularGameList, setPopularGameList] = useState();
   const [multiplayerGameList, setMultiplayerGameList] = useState();
-  const [SingleplayerGameList, setSingleplayerGameList] = useState();
+  const [singleplayerGameList, setSingleplayerGameList] = useState();
+  const [fightingGameList, setFightingGameList] = useState();
+  const [boardGameList, setBoardGameList] = useState();
   const [gameList, setGameList] = useState();
 
-  const [slidesPerViewRecommend, setSlidesPerViewRecommend] = useState(3);
-  const [slidesPerViewPopular, setSlidesPerViewPopular] = useState(3);
+  const [slidesPerViewRecommend, setSlidesPerViewRecommend] = useState(2);
+  const [slidesPerViewPopular, setSlidesPerViewPopular] = useState(2);
   const [slidesPerViewMultiplayerGame, setSlidesPerViewMultiplayerGame] =
     useState(6);
+  const [slidesPerViewBoardGameList, setSlidesPerViewBoardGameList] =
+    useState(4);
 
   useEffect(() => {
-    changeAttributeOnScreenSize();
-
     //Get Recommend Game
     hitGetGames(1, 10)
       .catch((err) => {
@@ -71,34 +73,61 @@ function Home() {
       .then((data) => {
         setSingleplayerGameList(data.data.results);
       });
+    //Get List BoardList
+    hitGetGames(11, 4)
+      .catch((err) => {
+        console.log(err);
+      })
+      .then((data) => {
+        setBoardGameList(data.data.results);
+      });
+
+    //Get List Fighting List
+    hitGetGames(12, 4)
+      .catch((err) => {
+        console.log(err);
+      })
+      .then((data) => {
+        setFightingGameList(data.data.results);
+      });
+
+    changeAttributeOnScreenSize();
   }, []);
 
   const changeAttributeOnScreenSize = () => {
     var windowWidth = window.innerWidth;
-
     if (windowWidth <= 442) {
       setSlidesPerViewRecommend(2);
       setSlidesPerViewPopular(2);
       setSlidesPerViewMultiplayerGame(3);
+      setSlidesPerViewBoardGameList(2);
     } else if (windowWidth <= 610) {
+      setSlidesPerViewRecommend(3);
+      setSlidesPerViewPopular(3);
       setSlidesPerViewMultiplayerGame(4);
+      setSlidesPerViewBoardGameList(2);
     } else if (windowWidth <= 768) {
       setSlidesPerViewRecommend(3);
       setSlidesPerViewPopular(3);
       setSlidesPerViewMultiplayerGame(4);
+      setSlidesPerViewBoardGameList(2);
     } else if (windowWidth <= 992) {
       setSlidesPerViewRecommend(4);
       setSlidesPerViewPopular(4);
+      setSlidesPerViewBoardGameList(2);
     } else if (windowWidth <= 1200) {
       setSlidesPerViewRecommend(3);
       setSlidesPerViewPopular(3);
       setSlidesPerViewMultiplayerGame(4);
+      setSlidesPerViewBoardGameList(3);
     } else if (windowWidth <= 1392) {
       setSlidesPerViewMultiplayerGame(5);
+      setSlidesPerViewBoardGameList(3);
     } else {
       setSlidesPerViewRecommend(3);
       setSlidesPerViewPopular(3);
       setSlidesPerViewMultiplayerGame(6);
+      setSlidesPerViewBoardGameList(4);
     }
 
     if (windowWidth > 992) {
@@ -128,6 +157,7 @@ function Home() {
   };
 
   window.onresize = changeAttributeOnScreenSize;
+  window.onload = changeAttributeOnScreenSize;
 
   return (
     <div className="container">
@@ -203,55 +233,26 @@ function Home() {
           />
           <Gamelist
             childClass={"recommend"}
-            gameData={SingleplayerGameList}
+            gameData={singleplayerGameList}
             title={"Singleplayer"}
             slidesPerView={slidesPerViewMultiplayerGame}
           />
         </div>
 
-        {/* <div className="page4">
-          <div className="background"></div>
-          <div className="data">
-            <p className="title">STEAM ACHIEVEMENT</p>
-            <div className="row">
-              <div className="side left-side">
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <div key={index} className="box">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png"
-                      alt=""
-                    />
-                    <p>Grand Theft Auto V</p>
-                  </div>
-                ))}
-              </div>
-              <img
-                className="trailer"
-                src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png"
-                alt=""
-              />
-              <div className="side right-side">
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <div key={index} className="box">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png"
-                      alt=""
-                    />
-                    <p>Grand Theft Auto V</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         <div className="page5">
-          {/* <GamelistType2 /> */}
-          {/* <GamelistType2 /> */}
+          <GamelistType2
+            gameData={fightingGameList}
+            slidesPerView={slidesPerViewBoardGameList}
+            title={"More Recommend For You"}
+          />
+          <GamelistType2
+            gameData={boardGameList}
+            slidesPerView={slidesPerViewBoardGameList}
+            title={"Comming Soon"}
+          />
         </div>
-
-        {<Footer />}
       </div>
+      {<Footer />}
     </div>
   );
 }

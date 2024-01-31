@@ -57,6 +57,8 @@
   .page2 .gamegrid .box-11 {
     display: none;
   }
+
+  /* ------------- PAGE 5 --------------- */
 }
 
 @media screen and (max-width: 1200px) {
@@ -183,7 +185,7 @@
   }
 
   .page1 .rightside .games {
-    width: 600px;
+    width: 700px;
   }
   .page1 .rightside .games .gamelist .box .display {
     width: 170px;
@@ -235,9 +237,8 @@
     align-items: center;
   }
 
-
   .page3 .games .gamelist .box,
-  .page3 .games .gamelist .skeleton{
+  .page3 .games .gamelist .skeleton {
     display: flex;
     justify-content: center;
   }
@@ -252,12 +253,7 @@
 
   /* ---------------FOOTER------------- */
 
-  .footer .top {
-    width: 100%;
-  }
-  .bottom {
-    flex-wrap: wrap;
-  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -273,7 +269,7 @@
   }
 
   .page1 .rightside .games {
-    width: 460px;
+    width: 560px;
   }
 
   /* ---------------PAGE 2------------- */
@@ -286,7 +282,18 @@
   /* ---------------PAGE 4------------- */
   /* ---------------PAGE 5------------- */
 
+  .type2 .gamelist .box,
+  .type2 .gamelist .skeleton {
+    width: 40vw !important;
+  }
+
+  .type2 .gamelist .box .display,
+  .type2 .gamelist .skeleton .display {
+    height: 45vw;
+  }
   /* ---------------FOOTER------------- */
+
+
 }
 
 @media screen and (max-width: 610px) {
@@ -394,14 +401,24 @@
   }
 
   .page3 .games .gamelist .box .display,
-  .page3 .games .gamelist .skeleton .display
-  {
+  .page3 .games .gamelist .skeleton .display {
     width: 28vw;
     height: 28vw;
   }
-  
+
   /* ---------------PAGE 4------------- */
   /* ---------------PAGE 5------------- */
 
+  .page5 .type2 .title {
+    font-size: 18px;
+  }
+  .page5 .type2 .gamelist .box .title {
+    font-size: 15px;
+  }
+  .page5 .type2 .gamelist .box .description {
+    font-size: 14px;
+  }
+
   /* ---------------FOOTER------------- */
+
 }

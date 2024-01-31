@@ -195,7 +195,7 @@
 
 .page4 .data .row .trailer {
   width: 700px;
-  height: calc(730px * 9 / 16);
+  height: calc(700px * 9 / 16);
   object-fit: cover;
 }
 
@@ -203,17 +203,17 @@
   /* flex-grow: 1; */
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .page4 .side .box {
   display: flex;
-  flex-direction: column;
-  width: 200px;
+  width: 220px;
+  margin-bottom: 10px;
 }
 
 .page4 .side.right-side .box {
   align-items: end;
+  text-align: right;
 }
 
 .page4 .side .box img {
@@ -232,6 +232,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 750px;
   justify-content: center;
+  padding-bottom: 90px;
 }
