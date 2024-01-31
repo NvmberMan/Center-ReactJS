@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 // import Swiper JS
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -26,6 +25,10 @@ export class Gamelist extends Component {
       return text;
     };
 
+    const goToDetail = (slug) => {
+      window.location = "/detail/"+ slug;
+    }
+
     return (
       <div>
         {gameData && gameData.length > 0 ? (
@@ -43,7 +46,7 @@ export class Gamelist extends Component {
             >
               {gameData &&
                 gameData.map((item, index) => (
-                  <SwiperSlide key={index} className="box">
+                  <SwiperSlide key={index} className="box" onClick={() => goToDetail(item.slug)}>
                     <img
                       src={item.background_image}
                       alt=""

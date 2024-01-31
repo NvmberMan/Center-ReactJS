@@ -26,7 +26,6 @@ a {
   color: var(--text_10);
 }
 
-
 .gradientTop {
   position: absolute;
   width: 100%;
@@ -48,18 +47,20 @@ body {
   padding-top: 100px;
 }
 
-
 :root {
   --black: #000000;
-    
+
   --body_background: #2e7039;
-  --primary: #26602F;
-  --secondary: #5C9C67;
-  --secondary_2: #2B6936;
-  --skeleton: #52885B;
+  --primary: #26602f;
+  --secondary: #5c9c67;
+  --secondary_2: #2b6936;
+  --skeleton: #52885b;
   --text_10: #ffffff;
-  --text_9: #D9E5DB;
+  --text_9: #d9e5db;
   --text_8: #d5d5d5;
+  --text_7: #ffffffa8;
+  --text_5:rgba(255, 255, 255, 0.571);
+  --text_4:rgba(255, 255, 255, 0.407);
 
   --width1350: 1350px;
   --width1180: 1180px;
@@ -73,15 +74,13 @@ body {
 [data-theme="dark"] {
   --body_background: #222222;
   --primary: #1b1b1b;
-  --secondary: #6D6D6D;
+  --secondary: #6d6d6d;
   --secondary_2: #191919;
   --skeleton: #434343;
   --text_10: #ffffff;
-  --text_9: #DFDFDF;
+  --text_9: #dfdfdf;
   --text_8: #d5d5d5;
 }
-
-
 
 .title {
   font-weight: 850;
@@ -99,10 +98,9 @@ body {
   align-items: center;
 }
 
-.content{
-    width: 100%;
+.content {
+  width: 100%;
 }
-
 
 /* width */
 ::-webkit-scrollbar {

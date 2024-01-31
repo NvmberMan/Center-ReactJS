@@ -9,10 +9,12 @@ import {
   faSun,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [themeToogle, setThemeToogle] = useState([false]);
-
+  
   const setDarkMode = () => {
     document.querySelector("body").setAttribute("data-theme", "dark");
   };
@@ -41,7 +43,7 @@ export default function Navbar() {
     <div>
       <div className="navbar">
         <div className="content">
-          <h1 className="title">CENTRAL</h1>
+          <h1 className="title" onClick={() => navigate("/")}>CENTRAL</h1>
           <ul className="navbar-left">
             <li className="selected">
               <a href="/">ALL GAMES</a>

@@ -3,8 +3,6 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Gamelist from "../Components/Gamelist";
 import GamelistType2 from "../Components/GamelistType2";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { hitGetGames } from "../Api";
 import xbox from "../Images/xbox.svg";
 import playstation from "../Images/playstation.svg";
 import windows from "../Images/windows.svg";
@@ -13,7 +11,7 @@ import android from "../Images/android.svg";
 import nintendo from "../Images/nintendo.svg";
 import linux from "../Images/linux.svg";
 import macos from "../Images/macos.svg";
-// import SteamAchievementGamelist from "../Components/SteamAchievementGamelist";
+import { getBoardGame, getFightingGame, getMiniGameList, getMultiplayerGame, getPopularGame, getRecommend, getSingleplayerGame } from "../ApiManager";
 
 function Home() {
   const [recommendGameList, setRecommendGameList] = useState();
@@ -23,7 +21,7 @@ function Home() {
   const [fightingGameList, setFightingGameList] = useState();
   const [boardGameList, setBoardGameList] = useState();
   const [gameList, setGameList] = useState();
-
+  
   const [slidesPerViewRecommend, setSlidesPerViewRecommend] = useState(2);
   const [slidesPerViewPopular, setSlidesPerViewPopular] = useState(2);
   const [slidesPerViewMultiplayerGame, setSlidesPerViewMultiplayerGame] =
@@ -32,64 +30,17 @@ function Home() {
     useState(4);
 
   useEffect(() => {
-    //Get Recommend Game
-    hitGetGames(1, 10)
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((data) => {
-        setRecommendGameList(data.data.results);
-      });
-    //Get Favorite Game
-    hitGetGames(4, 10)
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((data) => {
-        setPopularGameList(data.data.results);
-      });
-    //Get List Game -- for page 2
-    hitGetGames(5, 12)
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((data) => {
-        setGameList(data.data.results);
-        console.log(data.data.results);
-      });
-    //Get List Multiplayer
-    hitGetGames(7, 12)
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((data) => {
-        setMultiplayerGameList(data.data.results);
-      });
-    //Get List Singleplayer
-    hitGetGames(8, 12)
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((data) => {
-        setSingleplayerGameList(data.data.results);
-      });
-    //Get List BoardList
-    hitGetGames(11, 4)
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((data) => {
-        setBoardGameList(data.data.results);
-      });
-
-    //Get List Fighting List
-    hitGetGames(12, 4)
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((data) => {
-        setFightingGameList(data.data.results);
-      });
+    //Fetching all data in ApiManager.js
+    const fetchData = async () => {
+      setRecommendGameList( await getRecommend());
+      setPopularGameList( await getPopularGame())
+      setGameList( await getMiniGameList())
+      setMultiplayerGameList(await getMultiplayerGame());
+      setSingleplayerGameList(await getSingleplayerGame())
+      setFightingGameList(await getFightingGame())
+      setBoardGameList(await getBoardGame())
+    };
+    fetchData();
 
     changeAttributeOnScreenSize();
   }, []);

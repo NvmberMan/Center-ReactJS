@@ -22,3 +22,8 @@ export const hitGetGamesByGenre = (pagesize = 10) => {
     return data;
 }
 
+export const hitDetailGame = (slug) => {
+    const data = axios.get(`${apiUrl}/games/${slug}?dates=2019-09-01,2019-09-30&platforms=18,1,7&key=${apiKey}`, config);
+    return data
+}
+
