@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDown,
@@ -14,7 +14,8 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const navigate = useNavigate();
   const [themeToogle, setThemeToogle] = useState([false]);
-  
+  const [scrolled, setScrolled] = useState(false);
+
   const setDarkMode = () => {
     document.querySelector("body").setAttribute("data-theme", "dark");
   };
@@ -30,20 +31,39 @@ export default function Navbar() {
 
   const toogleNavbar = () => {
     const navbarResponsive = document.getElementById("navbar-responsive");
-    if(navbarResponsive.classList.contains("hidden"))
-    {
+    if (navbarResponsive.classList.contains("hidden")) {
       navbarResponsive.classList.remove("hidden");
-    }else
-    {
+    } else {
       navbarResponsive.classList.add("hidden");
     }
-  }
+  };
+
+  useEffect(() => {
+    // Fungsi untuk menangani perubahan scroll
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+    handleScroll();
+    // Tambahkan event listener saat komponen dimuat
+    window.addEventListener("scroll", handleScroll);
+    // Hapus event listener saat komponen dibongkar
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrolled]);
+
+  const navbarClass = scrolled ? "navbar nav-scrolled" : "navbar";
 
   return (
     <div>
-      <div className="navbar">
+      <div className={`navbar ${navbarClass}`}>
         <div className="content">
-          <h1 className="title" onClick={() => navigate("/")}>CENTRAL</h1>
+          <h1 className="title" onClick={() => navigate("/")}>
+            CENTRAL
+          </h1>
           <ul className="navbar-left">
             <li className="selected">
               <a href="/">ALL GAMES</a>
@@ -63,7 +83,11 @@ export default function Navbar() {
             />
             <FontAwesomeIcon className="icon" icon={faGlobe} />
             <li>YOUR ACCOUNT</li>
-            <FontAwesomeIcon className="icon humberger" onClick={toogleNavbar} icon={faBars} />
+            <FontAwesomeIcon
+              className="icon humberger"
+              onClick={toogleNavbar}
+              icon={faBars}
+            />
           </ul>
         </div>
       </div>
@@ -99,3 +123,6 @@ export default function Navbar() {
     </div>
   );
 }
+
+
+

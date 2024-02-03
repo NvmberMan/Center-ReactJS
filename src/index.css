@@ -47,6 +47,12 @@ body {
   padding-top: 100px;
 }
 
+.skeleton{
+  background: linear-gradient(90deg, transparent, var(--skeleton), transparent);
+  background-size: 200% 100%;
+  animation: skeletonAnimation 2.5s infinite linear;
+}
+
 :root {
   --black: #000000;
 
@@ -54,6 +60,7 @@ body {
   --primary: #26602f;
   --secondary: #5c9c67;
   --secondary_2: #2b6936;
+  --navbar: #28482E;
   --skeleton: #52885b;
   --text_10: #ffffff;
   --text_9: #d9e5db;
@@ -76,6 +83,7 @@ body {
   --primary: #1b1b1b;
   --secondary: #6d6d6d;
   --secondary_2: #191919;
+  --navbar: #191919;
   --skeleton: #434343;
   --text_10: #ffffff;
   --text_9: #dfdfdf;

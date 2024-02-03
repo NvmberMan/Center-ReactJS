@@ -1,4 +1,4 @@
-import { hitGetGames } from "./Api";
+import { hitDetailGame, hitGetGames, hitScreenshotsGame, hitTrailerGame } from "./Api";
 
 export const getRecommend = async () => {
   try {
@@ -70,4 +70,49 @@ export const getFightingGame = async () => {
     return [];
   }
 };
+
+
+export const getDetailGame = async (slug) => {
+  try {
+    const response = await hitDetailGame(slug);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching game recommendations:", error);
+    return [];
+  }
+};
+
+export const getTrailerGame = async (slug) => {
+  try {
+    const response = await hitTrailerGame(slug);
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching game recommendations:", error);
+    return [];
+  }
+};
+
+export const getScreenshotsGame = async (slug) => {
+  try {
+    const response = await hitScreenshotsGame(slug);
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching game recommendations:", error);
+    return [];
+  }
+};
+
+
+export const getSimilarGame = async () => {
+  try {
+    const response = await hitGetGames(13, 8);
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching game recommendations:", error);
+    return [];
+  }
+};
+
+
+
 

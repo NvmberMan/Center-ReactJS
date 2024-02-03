@@ -1,12 +1,34 @@
+@keyframes skeletonAnimation {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+
 .container.detail {
   width: 100%;
   min-height: 100vh;
   position: relative;
 }
 
-.container.detail .content-detail {
-  /* padding-top: 100px; */
+.background-image {
+  position: fixed;
+  top: 0;
+  margin-top: -100px;
+  left: 0;
+  width: 100vw;
+  height: 120vh;
+  /* height: 140vh; */
+  z-index: -4;
+  opacity: 0.7;
+  filter: brightness(0.2);
+  object-fit: cover;
+  transition: 0.3;
 }
+
 .container.detail .gradientTop {
   position: absolute;
   width: 100%;
@@ -21,116 +43,300 @@
     rgba(0, 0, 0, 0) 100%
   );
 }
-.detail-game{
-    display: flex;
-    padding: 20px 0;
+.detail-game {
+  display: flex;
+  padding: 20px 0;
+  justify-content: space-between;
 }
 
-
-.detail-game .leftside{
-    border: 1px solid red;
-    width: 55%;
-    min-height: 700px;
-    padding: 60px 20px;
+.detail-game .leftside {
+  /* border: 1px solid red; */
+  width: 60%;
+  min-height: 700px;
+  padding: 60px 20px;
 }
 
-.detail-game .rightside{
-    border: 1px solid blue;
-    flex-grow: 1;
-    height: 700px;
+.detail-game .leftside .title {
+  color: var(--text_8);
+  font-size: 35px;
+  font-weight: 450;
 }
 
-.detail-game .leftside .title{
-    color: var(--text_8);
-    font-size: 40px;
-    font-weight: 450;
+.detail-game .leftside .description {
+  color: var(--text_7);
+  font-size: 15px;
+  font-weight: 450;
+  letter-spacing: 0.5px;
+  margin-top: 15px;
 }
 
-
-.detail-game .leftside .description{
-    color: var(--text_7);
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    margin-top: 15px;
+.detail-game .leftside .description.truncated {
+  background: linear-gradient(
+    180deg,
+    var(--text_10) 50.29%,
+    rgba(213, 222, 215, 0) 92.99%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.detail-game .leftside .read-more{
-    color: var(--text_7);
-    margin-top: 12px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    cursor: pointer;
+.detail-game .leftside .description p {
+  color: var(--text_7);
+}
+.detail-game .leftside .description h1,
+h2,
+h3 {
+  color: var(--text_9);
+  font-size: 15px;
 }
 
-.detail-game .leftside .read-more:hover{
-    text-decoration: underline;
-}
-.detail-game .leftside .list{
-    border: 2px solid green;
-    display: flex;
-    gap: 40px 80px;
-    margin-top: 40px;
-    flex-wrap: wrap;
+.detail-game .leftside .read-more {
+  color: var(--text_7);
+  margin-top: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
 }
 
-
-.detail-game .leftside .bar .name{
-    color: var(--text_4);
-    font-weight: 700;
-    font-size: 18px;
+.detail-game .leftside .read-more:hover {
+  text-decoration: underline;
+}
+.detail-game .leftside .list {
+  /* border: 2px solid green; */
+  display: flex;
+  gap: 40px 80px;
+  margin-top: 40px;
+  flex-wrap: wrap;
 }
 
-.detail-game .leftside .bar .fill{
-    color: var(--text_7);
-    font-weight: 500;
-    font-size: 18px;
-    margin-top: 10px;
+.detail-game .leftside .bar .name {
+  color: var(--text_4);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.detail-game .leftside .bar .fill {
+  color: var(--text_7);
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 /* ------------------SYSTEM REQUIREMENT----------------- */
 
-.detail-game .leftside .system-requirements{
-    margin-top: 40px;
-    border: 1px solid rgb(81, 33, 33);
+.detail-game .leftside .system-requirements {
+  margin-top: 40px;
+  /* border: 1px solid rgb(81, 33, 33); */
 }
 
-.detail-game .leftside .system-requirements .title{
-    font-size: 22px;
-    color: var(--text_7);
+.detail-game .leftside .system-requirements .title {
+  font-size: 22px;
+  color: var(--text_7);
 }
 
-.detail-game .leftside .system-requirements .platforms{
-    display: flex;
-    gap: 30px;
-    margin-top: 3px;
+.detail-game .leftside .system-requirements .platforms {
+  display: flex;
+  gap: 30px;
+  margin-top: 3px;
 }
 
-.detail-game .leftside .system-requirements .platforms p{
-    color: var(--text_4);
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
+.detail-game .leftside .system-requirements .platforms p {
+  color: var(--text_4);
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-
-.detail-game .leftside .system-requirements .platforms p.selected{
-    color: var(--text_7);
+.detail-game .leftside .system-requirements .platforms p.selected {
+  color: var(--text_7);
 }
 
-.detail-game .leftside .system-requirements .requirements{
-    margin-top: 20px;
-    border: 2px solid purple;
+.detail-game .leftside .system-requirements .requirements {
+  margin-top: 20px;
+  /* border: 2px solid purple; */
 }
 
-.detail-game .leftside .system-requirements .requirements .title{
-    font-size: 15px;
-    color: var(--text_7);
+.detail-game .leftside .system-requirements .requirements .title {
+  font-size: 15px;
+  color: var(--text_7);
 }
 
+.detail-game .leftside .system-requirements .requirements ul {
+  padding-left: 25px;
+  margin-top: 7px;
+  color: var(--text_7);
+}
 
-.detail-game .leftside .system-requirements .requirements ul{
-    padding-left: 25px;
-    margin-top: 7px;
-    color: var(--text_7);
+/* ------------------RIGHT SIDE------------------- */
+.detail-game .rightside {
+  /* border: 1px solid blue; */
+  width: 40%;
+  /* flex-grow: 1; */
+  min-height: 500px;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.detail-game .rightside .main {
+
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+}
+
+.detail-game .rightside .main.skeleton{
+  background: linear-gradient(90deg, transparent, var(--skeleton), transparent);
+  background-size: 200% 100%;
+  animation: skeletonAnimation 2.5s infinite linear;
+
+}
+
+.detail-game .rightside video {
+  background-color: var(--black);
+  width: 100%;
+  height: 300px;
+}
+
+.detail-game .rightside .secondary {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.detail-game .rightside .secondary img {
+  width: 80px;
+  height: 120px;
+  flex-grow: 1;
+  background-color: var(--skeleton);
+  object-fit: cover;
+}
+
+.detail-game .rightside .secondary .skeleton {
+  width: 80px;
+  height: 120px;
+  flex-grow: 1;
+  /* background-color: var(--skeleton); */
+}
+
+.detail-game .rightside .wishlist-button {
+  width: 60%;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-top: 40px;
+  color: var(--text_8);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  border: 1px solid var(--text_4);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.detail-game .rightside .wishlist-button:hover {
+  background-color: var(--secondary_2);
+}
+.detail-game .rightside .platform-sale {
+  width: 80%;
+  margin-top: 20px;
+}
+.detail-game .rightside .platform-sale .title {
+  color: var(--text_7);
+  font-weight: 400;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.detail-game .rightside .platform-sale .list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.detail-game .rightside .platform-sale .list .box {
+  /* background-color: var(--primary); */
+  border: 1px solid var(--text_9);
+  height: 50px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text_9);
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.detail-game .rightside .platform-sale .list .box:hover {
+  background-color: var(--primary);
+}
+
+.more-game {
+  width: 100%;
+  /* background-color: var(--body_background); */
+  display: flex;
+  justify-content: center;
+}
+
+.more-game .content {
+  padding: 140px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.more-game .title {
+  text-align: center;
+  font-weight: 500;
+  color: var(--text_8);
+  font-size: 20px;
+}
+
+.more-game .list {
+  margin-top: 30px;
+  display: flex;
+  gap: 30px 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.more-game .list .game {
+  width: 250px;
+  /* background-color: red; */
+}
+
+.more-game .list .game img {
+  background-color: var(--skeleton);
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.more-game .list .game p {
+  font-size: 20px;
+  text-align: center;
+  color: var(--text_8);
+}
+
+.more-game .load {
+  color: var(--text_8);
+  cursor: pointer;
+  margin-top: 40px;
+  font-size: 18px;
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+.more-game .load:hover {
+  color: var(--text_10);
 }
