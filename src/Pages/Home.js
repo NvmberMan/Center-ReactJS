@@ -22,13 +22,34 @@ import {
 } from "../ApiManager";
 
 function Home() {
-  const [recommendGameList, setRecommendGameList] = useState();
-  const [popularGameList, setPopularGameList] = useState();
-  const [multiplayerGameList, setMultiplayerGameList] = useState();
-  const [singleplayerGameList, setSingleplayerGameList] = useState();
-  const [fightingGameList, setFightingGameList] = useState();
-  const [boardGameList, setBoardGameList] = useState();
-  const [gameList, setGameList] = useState();
+  const [recommendGameList, setRecommendGameList] = useState(() => {
+    const storedData = localStorage.getItem('recommendGameList');
+    return storedData ? JSON.parse(storedData) : null;
+  });
+  const [popularGameList, setPopularGameList] = useState(() => {
+    const storedData = localStorage.getItem('popularGameList');
+    return storedData ? JSON.parse(storedData) : null;
+  });
+  const [multiplayerGameList, setMultiplayerGameList] = useState(() => {
+    const storedData = localStorage.getItem('multiplayerGameList');
+    return storedData ? JSON.parse(storedData) : null;
+  });
+  const [singleplayerGameList, setSingleplayerGameList] = useState(() => {
+    const storedData = localStorage.getItem('singleplayerGameList');
+    return storedData ? JSON.parse(storedData) : null;
+  });
+  const [fightingGameList, setFightingGameList] = useState(() => {
+    const storedData = localStorage.getItem('fightingGameList');
+    return storedData ? JSON.parse(storedData) : null;
+  });
+  const [boardGameList, setBoardGameList] = useState(() => {
+    const storedData = localStorage.getItem('boardGameList');
+    return storedData ? JSON.parse(storedData) : null;
+  });
+  const [gameList, setGameList] = useState(() => {
+    const storedData = localStorage.getItem('gameList');
+    return storedData ? JSON.parse(storedData) : null;
+  });
 
   const [slidesPerViewRecommend, setSlidesPerViewRecommend] = useState(2);
   const [slidesPerViewPopular, setSlidesPerViewPopular] = useState(2);
@@ -40,15 +61,24 @@ function Home() {
   useEffect(() => {
     //Fetching all data in ApiManager.js
     const fetchData = async () => {
-      setRecommendGameList(await getRecommend());
-      setPopularGameList(await getPopularGame());
+      const recommendData = await getRecommend();
+      setRecommendGameList(recommendData);
+      localStorage.setItem('recommendGameList', JSON.stringify(recommendData));
+
+      const popularGameData = await getPopularGame();
+      setPopularGameList(popularGameData);
+      localStorage.setItem('popularGameList', JSON.stringify(popularGameData));
+
       setGameList(await getMiniGameList());
       setMultiplayerGameList(await getMultiplayerGame());
       setSingleplayerGameList(await getSingleplayerGame());
       setFightingGameList(await getFightingGame());
       setBoardGameList(await getBoardGame());
     };
-    fetchData();
+
+    if (!recommendGameList || !popularGameList /* Check other states as needed */) {
+      fetchData();
+    }
 
     changeAttributeOnScreenSize();
   }, []);
