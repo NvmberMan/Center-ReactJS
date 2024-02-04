@@ -17,7 +17,7 @@
 .navbar.nav-scrolled{
   /* background-color: transparent;
   background-color: rgba(63, 62, 62, 0.596); */
-  background-color: var(--navbar);
+  background-color: var(--primary);
   /* border-bottom: 1px solid var(--text_8); */
   /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
 }

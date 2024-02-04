@@ -3,9 +3,9 @@ import "../StylistComponent/detail.css";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { Await, useParams } from "react-router-dom";
-import { hitDetailGame } from "../Api";
 import {
   getDetailGame,
+  getPaginationSimilar,
   getScreenshotsGame,
   getSimilarGame,
   getTrailerGame,
@@ -17,7 +17,7 @@ function Detail() {
   const [selectedPlatform, setSelectedPlatform] = useState(0);
   const [trailerGame, setTrailerGame] = useState([]);
   const [screenshotsGame, setScreenshotsGame] = useState();
-  const [similarGame, setSimilarGame] = useState();
+  const [similarGame, setSimilarGame] = useState({ loading: true });
   const [detailGame, setDetailGame] = useState({
     name: "Loading",
     description: "",
@@ -53,6 +53,40 @@ function Detail() {
     }
   };
 
+  const addMoreSimilarGame = () => {
+    if (!similarGame) return;
+
+    const url = similarGame.next;
+
+    const fetchData = async () => {
+      setSimilarGame((prev) => ({
+        ...prev,
+        loading: true,
+      }));
+
+      getPaginationSimilar(url)
+        .then((response) => {
+          // Setelah mendapatkan data, memperbarui state dan loading menjadi false
+          setSimilarGame((prev) => ({
+            ...prev,
+            results: [...prev.results, ...response.results],
+            loading: false,
+          }));
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          // Jika terjadi kesalahan, set loading menjadi false
+          setSimilarGame((prev) => ({
+            ...prev,
+            loading: false,
+          }));
+        });
+    };
+    fetchData();
+  };
+  const goToDetail = (slug) => {
+    window.location = "/detail/" + slug;
+  };
   const toggleTruncate = () => {
     setIsTruncated((prev) => !prev);
   };
@@ -168,9 +202,17 @@ function Detail() {
               </video>
             ) : (
               <div
-                className={`main ${detailGame.background_image_additional == null ? "skeleton" : ""}`}
+                className={`main ${
+                  detailGame.background_image_additional == null &&
+                  detailGame.background_image == null
+                    ? "skeleton"
+                    : ""
+                }`}
                 style={{
-                  backgroundImage: `url(${detailGame.background_image_additional})`,
+                  backgroundImage: `url(${
+                    detailGame.background_image_additional ||
+                    detailGame.background_image
+                  })`,
                 }}
               ></div>
             )}
@@ -183,25 +225,33 @@ function Detail() {
                       <img key={index} src={item.image} alt="" />
                     ))
                 : Array.from({ length: 3 }, (_, index) => (
-                    <div className="skeleton"></div>
+                    <div key={index} className="skeleton"></div>
                   ))}
             </div>
-
-            <div className="wishlist-button">WISHLIST</div>
-            <div className="platform-sale">
-              <div className="title">Where To Buy :</div>
-              <div className="list">
-                {detailGame.stores.map((item, index) => (
-                  <a
-                    href={item.url ? item.url : `http://${item.store.domain}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="box"
-                  >
-                    {item.store.name}
-                  </a>
-                ))}
-              </div>
+            <div className="buttons">
+              <div className="wishlist-button">WISHLIST</div>
+              {detailGame && detailGame.stores.length > 0 ? (
+                <div className="platform-sale">
+                  <div className="title">Where To Buy :</div>
+                  <div className="list">
+                    {detailGame.stores.map((item, index) => (
+                      <a
+                        href={
+                          item.url ? item.url : `http://${item.store.domain}`
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        key={index}
+                        className="box"
+                      >
+                        {item.store.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div>
           </div>
         </div>
@@ -210,15 +260,29 @@ function Detail() {
         <div className="content">
           <div className="title">MORE LIKE THIS</div>
           <div className="list">
-            {similarGame &&
-              similarGame.map((item, index) => (
-                <div className="game">
+            {similarGame.results &&
+              similarGame.results.map((item, index) => (
+                <div
+                  onClick={() => goToDetail(item.slug)}
+                  className="game"
+                  key={index}
+                >
                   <img src={item.background_image} alt="" />
                   <p>{item.name}</p>
                 </div>
               ))}
+
+            {similarGame.loading &&
+              Array.from({ length: 8 }).map((_, index) => (
+                <div className="game" key={index}>
+                  <div className="img skeleton"></div>
+                  <div className="name skeleton"></div>
+                </div>
+              ))}
           </div>
-          <div className="load">Load More</div>
+          <div className="load" onClick={() => addMoreSimilarGame()}>
+            Load More
+          </div>
         </div>
       </div>
       <Footer />

@@ -49,7 +49,7 @@
 
   /* ------------- PAGE 2 --------------- */
   .page2 {
-    padding-top: 150px;
+    padding-top: 230px;
   }
   .page2 .gamegrid .box-8,
   .page2 .gamegrid .box-9,
@@ -155,6 +155,10 @@
   }
 
   /* ---------------PAGE 1------------- */
+  .video-bg {
+    height: 620px;
+  }
+
   .page1 {
     flex-direction: column;
   }
@@ -252,14 +256,16 @@
   /* ---------------PAGE 5------------- */
 
   /* ---------------FOOTER------------- */
-
-
 }
 
 @media screen and (max-width: 768px) {
   /* ---------------NAVBAR------------- */
 
   /* ---------------PAGE 1------------- */
+  .video-bg {
+    height: 600px;
+  }
+
   .page1 .leftside .display-1,
   .page1 .leftside .display-2 {
     width: 280px;
@@ -292,8 +298,6 @@
     height: 45vw;
   }
   /* ---------------FOOTER------------- */
-
-
 }
 
 @media screen and (max-width: 610px) {
@@ -342,6 +346,11 @@
     margin: 0;
   }
 
+  .games .title {
+    margin-bottom: 8px;
+    padding-left: 5px;
+  }
+
   .page1 .rightside .games .gamelist .box .display,
   .page1 .rightside .games .gamelist .skeleton .display {
     width: 25vw;
@@ -366,20 +375,30 @@
   /* ---------------NAVBAR------------- */
 
   /* ---------------PAGE 1------------- */
+  .video-bg {
+    height: 650px;
+  }
+  .page1 .leftside {
+  }
   .page1 .leftside .display-1 {
-    margin-right: -120px;
-    margin-bottom: -40px;
-    width: 53vw;
-    height: 75vw;
+    /* margin-top: -200px; */
+  }
+  .page1 .leftside .display-2 {
+    /* margin-top: -200px; */
+  }
+  .page1 .leftside .display-1 {
+    margin-right: -210px;
+    width: 73vw;
+    height: 95vw;
   }
   .page1 .leftside .display-2 {
     width: 73vw;
-    height: 102vw;
-    margin-left: -20px;
+    height: 105vw;
   }
 
   .page1 .rightside {
     height: fit-content;
+    margin-top: 100px;
   }
 
   .page1 .rightside .games .gamelist .box .display,
@@ -420,5 +439,4 @@
   }
 
   /* ---------------FOOTER------------- */
-
 }

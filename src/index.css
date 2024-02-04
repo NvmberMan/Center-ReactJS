@@ -41,6 +41,21 @@ a {
   );
 }
 
+
+.video-bg{
+  position: absolute;
+  width: 100vw;
+  height: 780px;
+  margin-top: -10px;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  filter: brightness(0.2);
+  z-index: -5;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
 body {
   background-color: var(--body_background);
   overflow-x: hidden;

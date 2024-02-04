@@ -81,11 +81,19 @@
   width: 300px !important;
 }
 
+.type2 .gamelist .box:hover .display{
+  transform: scale(1.03);
+  cursor: pointer;
+
+}
+
 .type2 .gamelist .box .display
 {
   width: 100%;
   height: 340px;
   object-fit: cover;
+  transition: 0.3s;
+
 }
 .type2 .gamelist .box .title{
   font-weight: 500;
@@ -93,6 +101,8 @@
   color: var(--text_8);
   margin-top: 10px;
   font-size: 18px;
+  cursor: pointer;
+
 }
 .type2 .gamelist .box .description{
   font-weight: 300;
@@ -100,6 +110,8 @@
   color: var(--text_8);
   letter-spacing: 1px;
   margin-top: -6px;
+  cursor: pointer;
+
 }
 
 

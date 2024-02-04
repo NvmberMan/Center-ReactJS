@@ -26,6 +26,10 @@ export class Gamelist extends Component {
       return text;
     };
 
+    const goToDetail = (slug) => {
+      window.location = "/detail/"+ slug;
+    }
+
     return (
       <div>
         {gameData && gameData.length > 0 ? (
@@ -38,7 +42,7 @@ export class Gamelist extends Component {
             >
               {gameData &&
                 Array.from({ length: slidesPerView }).map((item, index) => (
-                  <SwiperSlide key={index} className="box">
+                  <SwiperSlide key={index} className="box"  onClick={() => goToDetail(gameData[index].slug)}>
                     <img src={gameData[index].background_image} alt="" className="display" />
                     <div className="title">{truncateText(gameData[index].name, 20)}</div>
                     <div className="description">{truncateText("Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptates rem commodi repellat soluta, autem quia dolor eligendi distinctio exercitationem nihil omnis. Sed eligendi labore ullam ad magnam mollitia sit.", 60)}</div>

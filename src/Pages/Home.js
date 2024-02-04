@@ -11,7 +11,15 @@ import android from "../Images/android.svg";
 import nintendo from "../Images/nintendo.svg";
 import linux from "../Images/linux.svg";
 import macos from "../Images/macos.svg";
-import { getBoardGame, getFightingGame, getMiniGameList, getMultiplayerGame, getPopularGame, getRecommend, getSingleplayerGame } from "../ApiManager";
+import {
+  getBoardGame,
+  getFightingGame,
+  getMiniGameList,
+  getMultiplayerGame,
+  getPopularGame,
+  getRecommend,
+  getSingleplayerGame,
+} from "../ApiManager";
 
 function Home() {
   const [recommendGameList, setRecommendGameList] = useState();
@@ -21,7 +29,7 @@ function Home() {
   const [fightingGameList, setFightingGameList] = useState();
   const [boardGameList, setBoardGameList] = useState();
   const [gameList, setGameList] = useState();
-  
+
   const [slidesPerViewRecommend, setSlidesPerViewRecommend] = useState(2);
   const [slidesPerViewPopular, setSlidesPerViewPopular] = useState(2);
   const [slidesPerViewMultiplayerGame, setSlidesPerViewMultiplayerGame] =
@@ -32,13 +40,13 @@ function Home() {
   useEffect(() => {
     //Fetching all data in ApiManager.js
     const fetchData = async () => {
-      setRecommendGameList( await getRecommend());
-      setPopularGameList( await getPopularGame())
-      setGameList( await getMiniGameList())
+      setRecommendGameList(await getRecommend());
+      setPopularGameList(await getPopularGame());
+      setGameList(await getMiniGameList());
       setMultiplayerGameList(await getMultiplayerGame());
-      setSingleplayerGameList(await getSingleplayerGame())
-      setFightingGameList(await getFightingGame())
-      setBoardGameList(await getBoardGame())
+      setSingleplayerGameList(await getSingleplayerGame());
+      setFightingGameList(await getFightingGame());
+      setBoardGameList(await getBoardGame());
     };
     fetchData();
 
@@ -113,6 +121,10 @@ function Home() {
   return (
     <div className="container">
       {<Navbar />}
+      <video  controls autoPlay muted loop className="video-bg">
+        <source src={`https://steamcdn-a.akamaihd.net/steam/apps/256678163/movie_max.mp4`} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div className="content padding-fixed">
         <div className="gradientTop"></div>
         <div className="page1">

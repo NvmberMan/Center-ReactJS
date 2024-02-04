@@ -7,7 +7,6 @@
   }
 }
 
-
 .container.detail {
   width: 100%;
   min-height: 100vh;
@@ -182,7 +181,6 @@ h3 {
 }
 
 .detail-game .rightside .main {
-
   width: 100%;
   height: 300px;
   background-size: cover;
@@ -190,11 +188,10 @@ h3 {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
 }
 
-.detail-game .rightside .main.skeleton{
+.detail-game .rightside .main.skeleton {
   background: linear-gradient(90deg, transparent, var(--skeleton), transparent);
   background-size: 200% 100%;
   animation: skeletonAnimation 2.5s infinite linear;
-
 }
 
 .detail-game .rightside video {
@@ -211,7 +208,7 @@ h3 {
 
 .detail-game .rightside .secondary img {
   width: 80px;
-  height: 120px;
+  height: 100px;
   flex-grow: 1;
   background-color: var(--skeleton);
   object-fit: cover;
@@ -222,6 +219,13 @@ h3 {
   height: 120px;
   flex-grow: 1;
   /* background-color: var(--skeleton); */
+}
+
+.detail-game .rightside .buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .detail-game .rightside .wishlist-button {
@@ -313,6 +317,22 @@ h3 {
 .more-game .list .game {
   width: 250px;
   /* background-color: red; */
+  transition: 0.3s;
+  cursor: pointer;
+}
+.more-game .list .game:hover{
+  transform: scale(1.03);
+}
+
+.more-game .list .game .img.skeleton {
+  width: 100%;
+  height: 260px;
+}
+
+.more-game .list .game .name.skeleton {
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
 }
 
 .more-game .list .game img {
@@ -339,4 +359,140 @@ h3 {
 
 .more-game .load:hover {
   color: var(--text_10);
+}
+
+/* ----RESPONSIVE FOR DETAIL----- */
+@media screen and (max-width: 1392px) {
+  .detail .leftside {
+    /* border: 2px solid red; */
+  }
+
+  .detail .rightside {
+    /* border: 2px solid blue; */
+  }
+
+  .detail .rightside .wishlist-button {
+    width: 75%;
+  }
+
+  .detail .rightside .platform-sale {
+    /* border: 2px solid blue; */
+    width: 100%;
+  }
+
+  .detail .more-game .list {
+    width: 100%;
+    /* border: 2px solid purple; */
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .detail .detail-game {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .detail .rightside {
+    width: 80%;
+  }
+
+  .detail .rightside .main {
+    height: 400px;
+  }
+  .detail .rightside .secondary img,
+  .detail .rightside .secondary .skeleton {
+    height: 160px;
+  }
+
+  .detail .rightside .platform-sale {
+    width: 80%;
+  }
+
+  .detail .leftside{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .detail .rightside{
+    width: 85%;
+  }
+
+  .detail .rightside .main{
+    height: 42vw;
+  }
+  .detail .rightside .secondary img,
+  .detail .rightside .secondary .skeleton {
+    height: 16vw;
+  }
+  .detail .leftside{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .detail .rightside{
+    width: 95%;
+  }
+  .detail .rightside .main{
+    height: 47vw;
+  }
+  .detail .rightside .secondary img,
+  .detail .rightside .secondary .skeleton {
+    height: 18vw;
+  }
+}
+
+@media screen and (max-width: 610px) {
+}
+
+@media screen and (max-width: 442px) {
+  .detail .rightside{
+    width: 90%;
+    padding: 0;
+    min-height: 200px;
+  }
+
+  .detail .rightside .buttons{
+    width: 100%;
+  }
+
+  .detail .rightside .buttons .wishlist-button{
+    width: 100%;
+    height: 45px;
+    font-size: 13px;
+    border: none;
+  }
+
+  .detail .rightside .buttons .platform-sale{
+    width: 100%;
+  }
+  .detail .rightside .buttons .platform-sale .title{
+    text-align: left;
+    padding-left: 10px;
+    font-size: 15px;
+  }
+  .detail .rightside .buttons .platform-sale .list{
+    justify-content: start;
+  }
+
+
+  .detail .leftside .list{
+    gap: 10px;
+  }
+
+
+  .detail .leftside .system-requirements .platforms{
+    gap: 5px 13px;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .detail .rightside{
+    width: 95%;
+  }
+  .detail .rightside .buttons .platform-sale .list .box{
+    width: 100%;
+  }
 }

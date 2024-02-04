@@ -18,15 +18,20 @@ export default function Navbar() {
 
   const setDarkMode = () => {
     document.querySelector("body").setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark");
   };
-  const setLightkMode = () => {
+
+  const setLightMode = () => {
     document.querySelector("body").setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
   };
   const toggleTheme = (e) => {
-    document.getElementById("toggleThemeHiddenId");
-    setThemeToogle(!themeToogle);
-    if (themeToogle) setDarkMode();
-    else setLightkMode();
+    setThemeToogle((prevTheme) => {
+      const newTheme = !prevTheme;
+      if (newTheme) setDarkMode();
+      else setLightMode();
+      return newTheme;
+    });
   };
 
   const toogleNavbar = () => {
@@ -39,6 +44,12 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      document.querySelector("body").setAttribute("data-theme", storedTheme);
+      setThemeToogle(storedTheme === "dark");
+    }
+
     // Fungsi untuk menangani perubahan scroll
     const handleScroll = () => {
       const isScrolled = window.scrollY > 20;
@@ -123,6 +134,3 @@ export default function Navbar() {
     </div>
   );
 }
-
-
-
