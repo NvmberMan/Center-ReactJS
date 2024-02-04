@@ -70,7 +70,7 @@
   font-size: 23px;
 }
 
-.type2 .gamelist .swiper-wrapper {
+.type2 .gamelist {
   display: flex;
   gap: 20px;
   justify-content: center;

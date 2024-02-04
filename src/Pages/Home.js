@@ -10,6 +10,8 @@ import ios from "../Images/ios.svg";
 import android from "../Images/android.svg";
 import nintendo from "../Images/nintendo.svg";
 import linux from "../Images/linux.svg";
+import 'react-18-image-lightbox/style.css';
+
 import macos from "../Images/macos.svg";
 import {
   getBoardGame,
@@ -22,6 +24,8 @@ import {
 } from "../ApiManager";
 
 function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const [recommendGameList, setRecommendGameList] = useState();
   const [popularGameList, setPopularGameList] = useState();
   const [multiplayerGameList, setMultiplayerGameList] = useState();
@@ -47,6 +51,9 @@ function Home() {
       setSingleplayerGameList(await getSingleplayerGame());
       setFightingGameList(await getFightingGame());
       setBoardGameList(await getBoardGame());
+
+      setIsLoading(false);
+      changeAttributeOnScreenSize();
     };
     fetchData();
 
@@ -102,7 +109,7 @@ function Home() {
       return macos;
     } else if (platform === "Xbox One" || platform === "Xbox") {
       return xbox;
-    } else if (platform === "Nintendo Switch") {
+    } else if (platform === "Nintendo") {
       return nintendo;
     } else if (platform === "PlayStation 4" || platform === "PlayStation") {
       return playstation;
@@ -114,17 +121,26 @@ function Home() {
       return "path/to/default-image.png";
     }
   };
-
+  const goToDetail = (slug) => {
+    window.location = "/detail/" + slug;
+  };
   window.onresize = changeAttributeOnScreenSize;
   window.onload = changeAttributeOnScreenSize;
 
   return (
     <div className="container">
       {<Navbar />}
-      <video  controls autoPlay muted loop className="video-bg">
-        <source src={`https://steamcdn-a.akamaihd.net/steam/apps/256678163/movie_max.mp4`} type="video/mp4" />
+      <video controls autoPlay muted loop className="video-bg">
+        <source
+          src={`https://steamcdn-a.akamaihd.net/steam/apps/256678163/movie_max.mp4`}
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
+      <div className={`loading ${isLoading ? "" : "hide"}`}>
+        <p>CENTRAL</p>
+        <div className="bar"></div>
+      </div>
       <div className="content padding-fixed">
         <div className="gradientTop"></div>
         <div className="page1">
@@ -160,11 +176,15 @@ function Home() {
           <div className="gamegrid">
             {gameList
               ? gameList.map((item, index) => (
-                  <div key={index} className={`box box-${index}`}>
+                  <div
+                    key={index}
+                    className={`box box-${index}`}
+                    onClick={() => goToDetail(item.slug)}
+                  >
                     <div className="data">
                       <p>{item.name}</p>
                       <div className="platforms">
-                        {item.platforms.map((row, i) => (
+                        {item.parent_platforms.map((row, i) => (
                           <img
                             key={i}
                             src={getPlatformImage(row.platform.name)}

@@ -35,42 +35,29 @@ export class Gamelist extends Component {
         {gameData && gameData.length > 0 ? (
           <div className="type2">
             <p className="title">{title}</p>
-            <Swiper
-              className="gamelist fix"
-              spaceBetween={0}
-              modules={[Autoplay, Pagination, Navigation]}
-            >
+            <div className="gamelist">
               {gameData &&
                 Array.from({ length: slidesPerView }).map((item, index) => (
-                  <SwiperSlide key={index} className="box"  onClick={() => goToDetail(gameData[index].slug)}>
+                  <div key={index} className="box"  onClick={() => goToDetail(gameData[index].slug)}>
                     <img src={gameData[index].background_image} alt="" className="display" />
                     <div className="title">{truncateText(gameData[index].name, 20)}</div>
                     <div className="description">{truncateText("Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptates rem commodi repellat soluta, autem quia dolor eligendi distinctio exercitationem nihil omnis. Sed eligendi labore ullam ad magnam mollitia sit.", 60)}</div>
-                  </SwiperSlide>
+                  </div>
                 ))}
-            </Swiper>
+            </div>
           </div>
         ) : (
           <div className="type2">
             <p className="title">{title}</p>
-            <Swiper
-              className="gamelist"
-              spaceBetween={0}
-              slidesPerView={this.props.slidesPerView ?? 3}
-              loop={true}
-              autoplay={{
-                delay: 2500,
-              }}
-              modules={[Autoplay, Pagination, Navigation]}
-            >
+           <div className="gamelist">
               {Array.from({ length: slidesPerView }).map((_, index) => (
-                <SwiperSlide key={index} className="skeleton">
+                <div key={index} className="skeleton">
                   <div className="display"></div>
                   <div className="title"></div>
                   <div className="description"></div>
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
+            </div>
           </div>
         )}
       </div>

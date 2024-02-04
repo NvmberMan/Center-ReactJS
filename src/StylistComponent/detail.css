@@ -212,6 +212,12 @@ h3 {
   flex-grow: 1;
   background-color: var(--skeleton);
   object-fit: cover;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.detail-game .rightside .secondary img:hover{
+  filter: brightness(0.7);
 }
 
 .detail-game .rightside .secondary .skeleton {
@@ -478,7 +484,11 @@ h3 {
 
 
   .detail .leftside .list{
-    gap: 10px;
+    gap: 20px;
+  }
+
+  .detail .leftside .list .bar .fill{
+    margin-top: 0;
   }
 
 

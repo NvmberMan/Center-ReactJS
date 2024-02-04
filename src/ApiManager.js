@@ -3,7 +3,6 @@ import { hitDetailGame, hitGetGames, hitPagination, hitScreenshotsGame, hitTrail
 export const getRecommend = async () => {
   try {
     const response = await hitGetGames(1, 10);
-    console.log(response.data.results)
     return response.data.results;
   } catch (error) {
     console.error("Error fetching game recommendations:", error);
@@ -24,7 +23,10 @@ export const getPopularGame = async () => {
 export const getMiniGameList = async () => {
   try {
     const response = await hitGetGames(5, 12);
+    console.log(response.data.results)
+
     return response.data.results;
+    
   } catch (error) {
     console.error("Error fetching game recommendations:", error);
     return [];

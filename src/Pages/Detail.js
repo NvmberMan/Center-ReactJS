@@ -3,6 +3,7 @@ import "../StylistComponent/detail.css";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { Await, useParams } from "react-router-dom";
+import Lightbox from "react-18-image-lightbox";
 import {
   getDetailGame,
   getPaginationSimilar,
@@ -28,6 +29,9 @@ function Detail() {
     stores: [],
   });
 
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
     //Fetching all data in ApiManager.js
     const fetchData = async () => {
@@ -40,8 +44,8 @@ function Detail() {
   }, []);
 
   useEffect(() => {
-    console.log(similarGame);
-  }, [similarGame]);
+    console.log(screenshotsGame);
+  }, [screenshotsGame]);
 
   const truncateOrRestoreText = (text, maxLength, truncate) => {
     if (truncate) {
@@ -222,7 +226,15 @@ function Detail() {
                 ? screenshotsGame
                     .slice(0, screenshotsGame.length > 3 && 3)
                     .map((item, index) => (
-                      <img key={index} src={item.image} alt="" />
+                      <img
+                        key={index}
+                        src={item.image}
+                        alt=""
+                        onClick={() => {
+                          setPhotoIndex(index);
+                          setIsOpen(true);
+                        }}
+                      />
                     ))
                 : Array.from({ length: 3 }, (_, index) => (
                     <div key={index} className="skeleton"></div>
@@ -286,6 +298,17 @@ function Detail() {
         </div>
       </div>
       <Footer />
+
+      {isOpen && (
+        <Lightbox
+          mainSrc={screenshotsGame[photoIndex].image}
+          nextSrc={screenshotsGame[(photoIndex + 1) % screenshotsGame.length].image}
+          prevSrc={screenshotsGame[(photoIndex + screenshotsGame.length - 1) % screenshotsGame.length].image}
+          onCloseRequest={() => setIsOpen(false)}
+          onMovePrevRequest={() => setPhotoIndex((photoIndex + screenshotsGame.length - 1) % screenshotsGame.length)}
+          onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % screenshotsGame.length)}
+        />
+      )}
     </div>
   );
 }

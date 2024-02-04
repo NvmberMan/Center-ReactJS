@@ -56,6 +56,43 @@ a {
   object-position: center;
   pointer-events: none;
 }
+
+.loading{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: 15;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  opacity: 1;
+  transition: 0.2s;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.loading p{
+  font-weight: 900;
+  color: var(--secondary);
+  font-size: 14px;
+  animation: skeletonAnimation 2.5s infinite linear;
+}
+
+.loading .bar{
+  width: 130px;
+  height: 2px;
+  border-radius: 0;
+  background: linear-gradient(90deg, transparent, var(--skeleton), transparent);
+  background-size: 200% 100%;
+  animation: skeletonAnimation 2.5s infinite linear;
+}
+.loading.hide{
+  opacity: 0;
+  pointer-events: none;
+}
 body {
   background-color: var(--body_background);
   overflow-x: hidden;
@@ -76,7 +113,7 @@ body {
   --secondary: #5c9c67;
   --secondary_2: #2b6936;
   --navbar: #28482E;
-  --skeleton: #52885b;
+  --skeleton: #8b8b8b81;
   --text_10: #ffffff;
   --text_9: #d9e5db;
   --text_8: #d5d5d5;
@@ -99,7 +136,6 @@ body {
   --secondary: #6d6d6d;
   --secondary_2: #191919;
   --navbar: #191919;
-  --skeleton: #434343;
   --text_10: #ffffff;
   --text_9: #dfdfdf;
   --text_8: #d5d5d5;

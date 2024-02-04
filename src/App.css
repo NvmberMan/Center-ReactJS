@@ -71,6 +71,11 @@
   align-items: center;
   padding: 8px;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+.page2 .gamegrid .box:hover p{
+  text-decoration: underline;
 }
 
 .page2 .gamegrid .box-skeleton{
