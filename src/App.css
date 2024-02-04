@@ -23,7 +23,7 @@
   width: 360px;
   height: 500px;
   background-color: var(--primary);
-  border: 6px solid rgb(30, 30, 30);
+  /* border: 6px solid rgb(30, 30, 30); */
 }
 .page1 .display-2 {
   width: 360px;
@@ -33,7 +33,7 @@
   margin-top: 40px;
   position: absolute;
   background-color: var(--secondary);
-  border: 6px solid rgb(30, 30, 30);
+  /* border: 6px solid rgb(30, 30, 30); */
 }
 
 /* PAGE2 */
