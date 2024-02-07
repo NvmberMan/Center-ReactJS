@@ -1,0 +1,107 @@
+.allgame .filter {
+  width: 100%;
+  height: 40px;
+  margin-top: 50px;
+}
+
+
+.allgame .list{
+    margin-top: 10px;
+    min-height: 500px;
+    margin-bottom: 50px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 5px;
+    justify-content: center;
+}
+
+.allgame .list .game{
+    width: 255px;
+    height: 320px;
+    /* background-color: var(--primary); */
+    /* padding: 8px; */
+    cursor: pointer;
+}
+
+.allgame .list .game .img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.allgame .list .game .name{
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    margin-top: 2px;
+    padding-left: 7px;
+    margin-top: 5px;
+    min-height: 50px;
+}
+
+.allgame .list .game.hide-bg{
+    background-color: transparent;
+}
+
+
+.allgame .list .game:hover img{
+    /* transform: scale(1.002); */
+    filter: brightness(0.8);
+}
+
+
+/* FILTER  */
+
+
+.allgame .filter{
+    display: flex;
+    gap: 30px;
+    padding-left: 30px;
+}
+
+.allgame .filter .bar{
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+}
+
+.allgame .filter .bar:hover p,
+.allgame .filter .bar:hover .icon{
+    color: var(--text_8);
+}
+
+.allgame .filter .bar p{
+    color: var(--text_7);
+    font-size: 17px;
+}
+
+.allgame .filter .bar .icon{
+    margin-top: 5px;
+    margin-left: 3px;
+}
+
+.allgame .filter .bar.search{
+    flex-grow: 1;
+    display: flex;
+    justify-content: end;
+    padding-right: 30px;
+}
+
+.allgame .filter .bar.search input{
+    border: none;
+    outline: none;
+    background-color: var(--primary);
+    letter-spacing: 0.5px;
+    padding-left: 10px;
+    width: 300px;
+    color: var(--text_8);
+    font-size: 15px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.allgame .filter .bar.search input:focus{
+}

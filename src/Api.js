@@ -39,3 +39,4 @@ export const hitPagination = (url) => {
     const data = axios.get(url, config);
     return data;
 }
+

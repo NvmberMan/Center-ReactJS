@@ -126,6 +126,28 @@ export const getPaginationSimilar = async (url) => {
   }
 };
 
+export const getAllGames = async () => {
+  try {
+    const response = await hitGetGames(1, 15);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching game recommendations:", error);
+    return [];
+  }
+};
+
+export const getPaginationAllGames = async (url) => {
+  try {
+    const response = await hitPagination(url)
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching game recommendations:", error);
+    return [];
+  }
+};
+
+
+
 
 
 

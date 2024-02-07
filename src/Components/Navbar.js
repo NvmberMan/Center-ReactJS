@@ -77,7 +77,7 @@ export default function Navbar() {
           </h1>
           <ul className="navbar-left">
             <li className="selected">
-              <a href="/">ALL GAMES</a>
+              <a href="/games">ALL GAMES</a>
               <FontAwesomeIcon className="icon" icon={faAngleDown} />
             </li>
             <li>WISHLIST</li>
