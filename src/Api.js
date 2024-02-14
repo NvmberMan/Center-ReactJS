@@ -10,8 +10,12 @@ const config = {
 }
 
 
-export const hitGetGames = (page=1, pagesize = 10) => {
-    const data = axios.get(`${apiUrl}/games?page_size=${pagesize}&page=${page}&dates=2019-09-01,2019-09-30&platforms=18,1,7&key=${apiKey}`, config);
+export const hitGetGames = (page=1, pagesize = 10, filter="") => {
+    const data = axios.get(`${apiUrl}/games?page_size=${pagesize}&page=${page}&dates=2019-09-01,2019-09-30&platforms=18,1,7&key=${apiKey}${filter === "" ? "" : (filter)}`, config);
+    return data;
+}
+export const hitGetAllGames = (filter="") => {
+    const data = axios.get(`${apiUrl}/games?dates=2019-09-01,2019-09-30&platforms=18,1,7&key=${apiKey}${filter === "" ? "" : (filter)}`, config);
     return data;
 }
 export const hitGetGamesByGenre = (pagesize = 10) => {
@@ -40,3 +44,8 @@ export const hitPagination = (url) => {
     return data;
 }
 
+
+export const hitGenresList = () => {
+    const data = axios.get(`${apiUrl}/genres?dates=2019-09-01,2019-09-30&platforms=18,1,7&key=${apiKey}`, config);
+    return data;
+}
