@@ -128,7 +128,7 @@ export const getPaginationSimilar = async (url) => {
 
 export const getAllGames = async (filter = "") => {
   try {
-    const response = await hitGetGames(1, 7,filter);
+    const response = await hitGetGames(1, 8,filter);
     return response.data;
   } catch (error) {
     console.error("Error fetching game recommendations:", error);

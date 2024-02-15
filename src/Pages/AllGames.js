@@ -140,7 +140,7 @@ function AllGames() {
               <input onChange={(e) => setSearch(e.target.value)} type="search" placeholder="Keyword" />
             </div>
           </div>
-          {data.results.length > 0 ? (
+          {data && data.results.length > 0 ? (
             <InfiniteScroll
               dataLength={data.results.length}
               next={getMoreGames}

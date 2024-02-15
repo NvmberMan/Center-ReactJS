@@ -1,0 +1,185 @@
+/* -------------------------Login Page----------------------------- */
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  min-height: 65vh;
+}
+
+.auth-page .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-page .title h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.auth-page .title p {
+  font-weight: 400;
+  color: var(--text_5);
+  font-size: 15px;
+}
+
+.auth-page .auth-icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.auth-page .auth-icon img {
+  width: 33px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+}
+
+.auth-page .line-border {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.auth-page .line-border .line {
+  width: 50%;
+  height: 1px;
+  background-color: var(--secondary_3);
+}
+
+.auth-page .line-border p {
+  color: var(--text_5);
+  font-size: 14px;
+}
+
+.auth-page .input-form {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-page .input-form input {
+  width: 100%;
+  height: 48px;
+  background-color: var(--primary);
+  outline: none;
+  border: none;
+  padding-left: 14px;
+  border-radius: 12px;
+  color: var(--text_9);
+  border: 1px solid transparent;
+  transition: 0.2s;
+}
+.auth-page .input-form input:focus {
+  border: 1px solid var(--secondary);
+}
+
+.auth-page .input-form input::placeholder {
+  color: var(--text_5);
+  font-weight: 300;
+}
+
+.auth-page a.forgot {
+  color: var(--text_8);
+  font-size: 12px;
+  margin-left: 15px;
+  margin-top: 5px;
+  width: 100%;
+  transition: 0.3s;
+}
+.auth-page a.forgot:hover {
+  color: var(--text_5);
+}
+
+.auth-page .input-form.button {
+  display: flex;
+  gap: 6px;
+  margin-top: 35px;
+}
+
+.auth-page .input-form.button .submit {
+  height: 40px;
+  width: 180px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  background-color: var(--secondary);
+  color: var(--text_9);
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-page .input-form.button .submit:hover {
+  background-color: var(--secondary_3);
+}
+
+.auth-page .input-form.button .account {
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  color: var(--text_8);
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-page .input-form.button .account:hover {
+  color: var(--text_5);
+}
+
+/* REGISTER  */
+.auth-page .check {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  gap: 8px;
+}
+
+.auth-page .check input {
+  width: 11px;
+  height: 11px;
+  margin-top: 6px;
+  transform: scale(1.7);
+  margin-left: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.auth-page .check p {
+  font-size: 12px;
+  margin-top: 7px;
+  color: var(--text_8);
+}
+@media screen and (max-width: 610px) {
+  .auth-page form {
+    width: 380px;
+  }
+  .auth-page .title h1 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 442px) {
+  .auth-page form {
+    width: 90%;
+  }
+  .auth-page .title {
+    align-items: start;
+  }
+  .auth-page .title h1 {
+    font-size: 27px;
+  }
+
+  .auth-page .title p {
+    font-size: 12px;
+  }
+}
