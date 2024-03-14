@@ -119,8 +119,9 @@ export default function Navbar() {
       <div className={`navbar ${navbarClass}`}>
         <div className="content navbar-content">
           <div id="google_translate_element"></div>
+          <div  className="c-title" onClick={() => navigate("/")}></div>
           <h1 className="title notranslate" onClick={() => navigate("/")}>
-            CENTRAL
+            ENTRAL
           </h1>
           <ul className="navbar-left">
             <li className="selected">
