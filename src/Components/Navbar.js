@@ -82,11 +82,16 @@ export default function Navbar() {
     googleTranslateElementInit();
   }, []);
   function googleTranslateElementInit() {
+    try{
     // eslint-disable-next-line no-undef
-    new google.translate.TranslateElement(
+    new window.google.translate.TranslateElement(
       { pageLanguage: "en" },
       "google_translate_element"
     );
+    }catch(err) {
+      
+    }
+
   }
 
   function changeLanguage(lang, phone) {
@@ -96,22 +101,17 @@ export default function Navbar() {
       select.dispatchEvent(new Event("change"));
     }
 
-    if(phone)
-    {
+    if (phone) {
       closeLanguageMenu();
       toogleNavbar();
     }
   }
 
-  
-
-  function openLanguageMenu(){
+  function openLanguageMenu() {
     document.getElementById("language-menu").classList.remove("hide");
-
   }
-  function closeLanguageMenu(){
+  function closeLanguageMenu() {
     document.getElementById("language-menu").classList.add("hide");
-
   }
 
   return (
@@ -119,7 +119,7 @@ export default function Navbar() {
       <div className={`navbar ${navbarClass}`}>
         <div className="content navbar-content">
           <div id="google_translate_element"></div>
-          <div  className="c-title" onClick={() => navigate("/")}></div>
+          <div className="c-title" onClick={() => navigate("/")}></div>
           <h1 className="title notranslate" onClick={() => navigate("/")}>
             ENTRAL
           </h1>
@@ -228,17 +228,23 @@ export default function Navbar() {
           <div className="navbar-top">
             <div className="account">
               <FontAwesomeIcon className="icon" icon={faUser} />
-              <p className="notranslate">{currentUser ? currentUser.email : ""}</p>{" "}
+              <p className="notranslate">
+                {currentUser ? currentUser.email : ""}
+              </p>{" "}
               {/* <<-- Account Name Setting  */}
             </div>
-            <FontAwesomeIcon className="icon" onClick={() => openLanguageMenu()} icon={faGlobe} />
+            <FontAwesomeIcon
+              className="icon"
+              onClick={() => openLanguageMenu()}
+              icon={faGlobe}
+            />
           </div>
           <ul className="navbar-bottom">
             <li className="selected">
               <a href="/">All Games</a>
               {/* <FontAwesomeIcon className="icon" icon={faAngleDown} /> */}
             </li>
-            <li onClick={() => handleRoutes('/wishlist')}>Wishlist</li>
+            <li onClick={() => handleRoutes("/wishlist")}>Wishlist</li>
             {/* <li>Support</li> */}
           </ul>
 
@@ -248,7 +254,11 @@ export default function Navbar() {
         </div>
 
         <div className="language-menu hide" id="language-menu">
-        <FontAwesomeIcon onClick={() => closeLanguageMenu()} className="icon x-mark" icon={faXmark} />
+          <FontAwesomeIcon
+            onClick={() => closeLanguageMenu()}
+            className="icon x-mark"
+            icon={faXmark}
+          />
 
           <h2 className="notranslate">Change Language</h2>
           <p
