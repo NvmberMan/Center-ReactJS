@@ -59,7 +59,7 @@ export class Gamelist extends Component {
           </div>
         ) : (
           <div className="games">
-            <p className="title">{title}</p>
+            <p className="title notranslate">{title}</p>
             <Swiper
               className="gamelist"
               spaceBetween={0}

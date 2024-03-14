@@ -65,12 +65,31 @@
 
 .navbar .navbar-right {
   gap: 8px;
-  width: 300px;
-  cursor: pointer;
+  min-width: 300px;
+  max-width: 350px;
+  display: flex;
+  justify-content: end;
 }
 .navbar .navbar-right li {
   font-size: 16px;
   margin-left: 5px;
+}
+
+.navbar .navbar-right li .buttons{
+  display: flex;
+  gap: 5px;
+}
+.navbar .navbar-right li .buttons p{
+  color: var(--text_8);
+}
+
+.navbar .navbar-right li .href{
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.navbar .navbar-right li .href:hover{
+  color: var(--text_10);
 }
 .navbar .navbar-right .icon {
   width: 30px;
@@ -80,6 +99,14 @@
 
 .navbar .navbar-right .humberger {
   display: none;
+}
+
+.navbar .navbar-right .icon.globe{
+  cursor: pointer;
+  height: 23px;
+  width: 23px;
+  background-image: url(../Images/Globe.png);
+  background-size: cover;
 }
 
 
@@ -195,3 +222,168 @@
 }
 
 
+
+
+
+
+/* ------------CUSTOM RIGHT CLICK--------------- */
+.navbar-content{
+  position: relative;
+}
+.account-detail {
+  color: var(--white);
+  width: fit-content;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  margin-right: 30px;
+  margin-top: 35px;
+}
+.account-detail.hidden{
+  display: none;
+}
+
+.account-detail{
+  width: 230px;
+  min-height: 60px;
+  background-color: var(--secondary_2);
+  border: 2px solid var(--secondary_3);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.account-detail .title-dropdown{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  color: var(--text_8);
+  border-bottom: 2px solid var(--secondary);
+  padding: 20px 10px;
+}
+
+.account-detail .button{
+  color: var(--text_8);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  cursor: pointer;
+
+}
+
+.account-detail .button:hover{
+  background-color: var(--secondary);
+}
+
+
+
+/* ------------CUSTOM RIGHT CLICK  TRANSLATOR--------------- */
+
+.translate-detail {
+  color: var(--white);
+  width: fit-content;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  margin-right: 160px;
+  margin-top: 45px;
+}
+.translate-detail.hidden{
+  display: none;
+}
+
+.translate-detail{
+  width: 230px;
+  min-height: 60px;
+  background-color: var(--secondary_2);
+  border: 2px solid var(--secondary_3);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.translate-detail .title-dropdown{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  color: var(--text_8);
+  border-bottom: 2px solid var(--secondary);
+  padding: 20px 10px;
+}
+
+.translate-detail .button{
+  color: var(--text_8);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  cursor: pointer;
+
+}
+
+.translate-detail .button:hover{
+  background-color: var(--secondary);
+}
+
+.logoutButton{
+  width: 100%;
+  max-width: 300px;
+  height: 45px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: var(--secondary_3);
+  color: var(--text_8);
+}
+
+.language-menu{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 100px;
+  opacity: 1;
+  transition: 0.3s;
+  pointer-events: all;
+}
+
+
+.language-menu.hide{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.language-menu h2{
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.language-menu p{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text_8);
+  cursor: pointer;
+}
+
+.language-menu p:hover{
+  color: var(--text_10);
+}
+
+.language-menu .x-mark{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 30px;
+  margin-right: 30px;
+  margin-top: 20px;
+  cursor: pointer;
+}

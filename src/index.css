@@ -168,3 +168,17 @@ body {
 ::-webkit-scrollbar {
   width: 0;
 }
+
+
+.goog-te-gadget img {
+  display: none !important;
+}
+body > .skiptranslate {
+  display: none;
+}
+body {
+  top: 0px !important;
+}
+#google_translate_element{
+  display: none;
+}

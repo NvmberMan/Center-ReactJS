@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import "../StylistComponent/detail.css";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { Await, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Lightbox from "react-18-image-lightbox";
+import { database } from "../firebase";
+import { useAuth } from "../contexts/AuthContext";
 import {
   getDetailGame,
   getPaginationSimilar,
@@ -20,6 +22,7 @@ function Detail() {
   const [screenshotsGame, setScreenshotsGame] = useState();
   const [similarGame, setSimilarGame] = useState({ loading: true });
   const [detailGame, setDetailGame] = useState({
+    id: "",
     name: "Loading",
     description: "",
     platforms: [{ platform: { name: "" } }],
@@ -31,6 +34,8 @@ function Detail() {
 
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const { currentUser } = useAuth();
+  const [isInWishlist, setIsInWishlist] = useState(false);
 
   useEffect(() => {
     //Fetching all data in ApiManager.js
@@ -94,6 +99,71 @@ function Detail() {
   const toggleTruncate = () => {
     setIsTruncated((prev) => !prev);
   };
+
+  const addToWishlist = () => {
+    if (currentUser) {
+      // Pastikan pengguna sudah login sebelum menambahkan ke wishlist
+      const userId = currentUser.uid;
+
+      // Mendefinisikan path ke wishlist pengguna di database
+      const wishlistRef = database.ref(`users/${userId}/wishlist`);
+
+      // Mendapatkan detail game yang akan ditambahkan ke wishlist
+      const gameData = {
+        name: detailGame.name,
+        background_image: detailGame.background_image,
+        genres: detailGame.genres,
+        platforms: detailGame.platforms,
+        parent_platforms: detailGame.parent_platforms,
+        // Tambahkan informasi lain yang Anda perlukan ke dalam objek gameData
+      };
+
+      // Menambahkan data ke wishlist di database
+      if (!isInWishlist) {
+        wishlistRef
+          .child(detailGame.id)
+          .set(gameData)
+          .then(() => {
+            console.log("Game added to wishlist successfully!");
+            setIsInWishlist(true);
+          })
+          .catch((error) => {
+            console.error("Error adding game to wishlist:", error);
+          });
+      } else {
+        wishlistRef
+          .child(detailGame.id)
+          .remove()
+          .then(() => {
+            console.log("Game removed from wishlist");
+            setIsInWishlist(false);
+          });
+      }
+    }else
+    {
+      window.location = "/login"
+    }
+  };
+  useEffect(() => {
+    if (currentUser) {
+      // Ambil ID pengguna yang sedang login
+      const userID = currentUser.uid;
+
+      // Ambil ID game dari detailGame
+      const gameID = detailGame.id;
+
+      // Referensi ke lokasi game dalam wishlist pengguna di database
+      const wishlistRef = database.ref(`users/${userID}/wishlist/${gameID}`);
+
+      // Periksa apakah game sudah ada di wishlist
+      wishlistRef.once("value", (snapshot) => {
+        // alert(snapshot.exists())
+        console.log(snapshot)
+        setIsInWishlist(snapshot.exists());
+      });
+    }
+  }, [detailGame, currentUser]);
+
   return (
     <div className="container detail">
       {<Navbar />}
@@ -106,7 +176,7 @@ function Detail() {
       <div className="content content-detail">
         <div className="detail-game">
           <div className="leftside">
-            <div className="title">{detailGame.name}</div>
+            <div className="title notranslate">{detailGame.name}</div>
             <div
               className={`description ${isTruncated ? "truncated" : ""}`}
               dangerouslySetInnerHTML={{
@@ -241,7 +311,10 @@ function Detail() {
                   ))}
             </div>
             <div className="buttons">
-              <div className="wishlist-button">WISHLIST</div>
+              <div className="wishlist-button" onClick={addToWishlist}>
+                {isInWishlist ? "UNWISHLIST" : "WISHLIST"}
+              </div>
+              {/* saya ingin ketika div button diatas dipencet, saya ingin usestate dari detailGame di atas masuk ke realtime database sesuai dengan user id yang udah login tertentu */}
               {detailGame && detailGame.stores.length > 0 ? (
                 <div className="platform-sale">
                   <div className="title">Where To Buy :</div>
@@ -254,7 +327,7 @@ function Detail() {
                         target="_blank"
                         rel="noopener noreferrer"
                         key={index}
-                        className="box"
+                        className="box notranslate"
                       >
                         {item.store.name}
                       </a>
@@ -302,11 +375,23 @@ function Detail() {
       {isOpen && (
         <Lightbox
           mainSrc={screenshotsGame[photoIndex].image}
-          nextSrc={screenshotsGame[(photoIndex + 1) % screenshotsGame.length].image}
-          prevSrc={screenshotsGame[(photoIndex + screenshotsGame.length - 1) % screenshotsGame.length].image}
+          nextSrc={
+            screenshotsGame[(photoIndex + 1) % screenshotsGame.length].image
+          }
+          prevSrc={
+            screenshotsGame[
+              (photoIndex + screenshotsGame.length - 1) % screenshotsGame.length
+            ].image
+          }
           onCloseRequest={() => setIsOpen(false)}
-          onMovePrevRequest={() => setPhotoIndex((photoIndex + screenshotsGame.length - 1) % screenshotsGame.length)}
-          onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % screenshotsGame.length)}
+          onMovePrevRequest={() =>
+            setPhotoIndex(
+              (photoIndex + screenshotsGame.length - 1) % screenshotsGame.length
+            )
+          }
+          onMoveNextRequest={() =>
+            setPhotoIndex((photoIndex + 1) % screenshotsGame.length)
+          }
         />
       )}
     </div>

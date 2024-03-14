@@ -146,6 +146,14 @@
   background-color: var(--secondary_3);
 }
 
+.allgame .empty-data{
+  padding-left: 30px;
+  padding-top: 30px;
+}
+.allgame .empty-data P{
+  color:  var(--text_7);
+}
+
 /* ------RESPONSIVE------- */
 
 @media screen and (max-width: 768px) {

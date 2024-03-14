@@ -31,6 +31,7 @@
   justify-content: center;
   margin-top: 10px;
   gap: 5px;
+  cursor: pointer;
 }
 
 .auth-page .auth-icon img {
@@ -159,6 +160,17 @@
   margin-top: 7px;
   color: var(--text_8);
 }
+
+
+.auth-page .alert-form{
+  background-color: rgba(255, 0, 0, 0.34);
+  padding: 16px 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
 @media screen and (max-width: 610px) {
   .auth-page form {
     width: 380px;
