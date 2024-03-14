@@ -77,10 +77,10 @@ function Wishlist() {
             // Wishlist pengguna tersedia, lakukan sesuatu dengan datanya
             const wishlistArray = Object.values(wishlistData); // Mengubah objek menjadi array
             setData(wishlistArray);
-            console.log("Wishlist pengguna:", wishlistArray);
+            // console.log("Wishlist pengguna:", wishlistArray);
           } else {
             // Wishlist pengguna tidak tersedia atau kosong
-            console.log("Wishlist pengguna kosong.");
+            // console.log("Wishlist pengguna kosong.");
           }
         })
         .catch((error) => {

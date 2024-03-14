@@ -31,7 +31,7 @@ function Login() {
         // Menampilkan pesan kesalahan lain jika diperlukan
         setError("An error occurred. Please try again later.");
       }
-      console.log(error);
+      // console.log(error);
     }
   }
 
@@ -39,12 +39,12 @@ function Login() {
     signInWithGoogle()
       .then((result) => {
         // Autentikasi berhasil
-        console.log("Signed in with Google:", result.user);
+        // console.log("Signed in with Google:", result.user);
         // Redirect atau tindakan lain yang diperlukan setelah berhasil masuk
       })
       .catch((error) => {
         // Menangani error saat autentikasi
-        console.error("Error signing in with Google:", error);
+        // console.error("Error signing in with Google:", error);
       });
   }
   async function handleSignInFacebook() {

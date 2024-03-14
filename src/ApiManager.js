@@ -23,7 +23,7 @@ export const getPopularGame = async () => {
 export const getMiniGameList = async () => {
   try {
     const response = await hitGetGames(5, 12);
-    console.log(response.data.results)
+    // console.log(response.data.results)
 
     return response.data.results;
     
@@ -149,7 +149,7 @@ export const getPaginationAllGames = async (url) => {
 export const getGenres = async () => {
   try {
     const response = await hitGenresList()
-    console.log(response);
+    // console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error fetching game recommendations:", error);

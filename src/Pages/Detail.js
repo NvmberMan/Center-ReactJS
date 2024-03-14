@@ -49,7 +49,7 @@ function Detail() {
   }, []);
 
   useEffect(() => {
-    console.log(screenshotsGame);
+    // console.log(screenshotsGame);
   }, [screenshotsGame]);
 
   const truncateOrRestoreText = (text, maxLength, truncate) => {
@@ -124,7 +124,7 @@ function Detail() {
           .child(detailGame.id)
           .set(gameData)
           .then(() => {
-            console.log("Game added to wishlist successfully!");
+            // console.log("Game added to wishlist successfully!");
             setIsInWishlist(true);
           })
           .catch((error) => {
@@ -135,7 +135,7 @@ function Detail() {
           .child(detailGame.id)
           .remove()
           .then(() => {
-            console.log("Game removed from wishlist");
+            // console.log("Game removed from wishlist");
             setIsInWishlist(false);
           });
       }
@@ -158,7 +158,7 @@ function Detail() {
       // Periksa apakah game sudah ada di wishlist
       wishlistRef.once("value", (snapshot) => {
         // alert(snapshot.exists())
-        console.log(snapshot)
+        // console.log(snapshot)
         setIsInWishlist(snapshot.exists());
       });
     }

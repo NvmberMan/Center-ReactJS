@@ -34,7 +34,7 @@ function Register() {
         // Menampilkan pesan kesalahan lain jika diperlukan
         setError("An error occurred. Please try again later.");
       }
-      console.log(error)
+      // console.log(error)
     }
   }
 
